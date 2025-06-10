@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Program - Medifit</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Medifit</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="archive.html" class="nav-link">Workouts</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Workout Header -->
+    <section class="workout-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> > <a href="archive.html">Workouts</a> > <span id="currentProgram">Current Program</span>
+            </div>
+            <h1 id="programTitle">Muscle Gain - 5 Days Program</h1>
+            <div class="program-info">
+                <span class="info-badge" id="programLevel">Beginner</span>
+                <span class="info-badge" id="programDuration">5 Days</span>
+                <span class="info-badge" id="programType">Muscle Gain</span>
+            </div>
+            <p id="programDescription">Build lean muscle mass with progressive strength training exercises designed for beginners.</p>
+        </div>
+    </section>
+
+    <!-- Day Navigation -->
+    <section class="day-navigation">
+        <div class="container">
+            <h2>Choose Your Workout Day</h2>
+            <div class="day-tabs" id="dayTabs">
+                <button class="day-tab active" data-day="1">Day 1</button>
+                <button class="day-tab" data-day="2">Day 2</button>
+                <button class="day-tab" data-day="3">Day 3</button>
+                <button class="day-tab" data-day="4">Day 4</button>
+                <button class="day-tab" data-day="5">Day 5</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workout Content -->
+    <section class="workout-content">
+        <div class="container">
+            <!-- Day 1 -->
+            <div class="workout-day active" id="day1">
+                <h3>Day 1: Upper Body Foundation</h3>
+                <p class="day-description">Focus on building upper body strength with basic compound movements. Perfect for developing chest, back, shoulders, and arms.</p>
+                
+                <div class="exercises-grid">
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/4a90e2/ffffff?text=Pull-Ups" alt="Pull-Ups">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Pull-Ups</h4>
+                            <p>Build back and bicep strength with this classic exercise. Great for developing a V-shaped torso.</p>
+                            <div class="exercise-meta">
+                                <span>3 sets × 8-12 reps</span>
+                                <span>Rest: 60-90s</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('pigeon-pose')">Watch Video</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workout Progress Section -->
+    <section class="workout-progress">
+        <div class="container">
+            <h2>Track Your Progress</h2>
+            <div class="progress-grid">
+                <div class="progress-card">
+                    <h3>Workout Completion</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 20%"></div>
+                    </div>
+                    <p>Day 1 of 5 completed</p>
+                </div>
+                <div class="progress-card">
+                    <h3>Weekly Goal</h3>
+                    <div class="progress-circle">
+                        <svg width="100" height="100">
+                            <circle cx="50" cy="50" r="40" stroke="#e9ecef" stroke-width="8" fill="none"></circle>
+                            <circle cx="50" cy="50" r="40" stroke="#4a90e2" stroke-width="8" fill="none" 
+                                    stroke-dasharray="251.2" stroke-dashoffset="200.96" stroke-linecap="round"></circle>
+                        </svg>
+                        <span class="progress-text">20%</span>
+                    </div>
+                </div>
+                <div class="progress-card">
+                    <h3>Next Workout</h3>
+                    <div class="next-workout">
+                        <h4>Day 2: Lower Body Power</h4>
+                        <p>Tomorrow • 45 minutes</p>
+                        <button class="btn btn-secondary btn-small">Schedule</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="videoTitle">Exercise Video</h3>
+            <div class="video-placeholder">
+                <img src="https://via.placeholder.com/640x360/000000/ffffff?text=Video+Player" alt="Video Player" id="videoPlayer">
+                <div class="video-controls">
+                    <button class="play-btn">▶ Play Video</button>
+                </div>
+            </div>
+            <div class="video-info">
+                <h4>Exercise Instructions:</h4>
+                <ul id="exerciseInstructions">
+                    <li>Proper form instructions will appear here</li>
+                    <li>Step-by-step guidance</li>
+                    <li>Safety tips and modifications</li>
+                </ul>
+                <div class="video-tips">
+                    <h4>Pro Tips:</h4>
+                    <div id="exerciseTips">
+                        <p>Additional tips and modifications will be displayed here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Workout Notes Section -->
+    <section class="workout-notes">
+        <div class="container">
+            <h2>Workout Notes & Tips</h2>
+            <div class="notes-grid">
+                <div class="note-card">
+                    <div class="note-icon">💡</div>
+                    <h3>Form First</h3>
+                    <p>Always prioritize proper form over heavy weights. Quality movement patterns prevent injury and maximize results.</p>
+                </div>
+                <div class="note-card">
+                    <div class="note-icon">💧</div>
+                    <h3>Stay Hydrated</h3>
+                    <p>Drink water before, during, and after your workout. Proper hydration supports performance and recovery.</p>
+                </div>
+                <div class="note-card">
+                    <div class="note-icon">⏰</div>
+                    <h3>Rest Between Sets</h3>
+                    <p>Follow the recommended rest periods. They're designed to optimize your performance for each exercise.</p>
+                </div>
+                <div class="note-card">
+                    <div class="note-icon">📝</div>
+                    <h3>Track Progress</h3>
+                    <p>Record your weights, reps, and how you feel. Tracking helps you see improvements and adjust your training.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Workouts -->
+    <section class="related-workouts">
+        <div class="container">
+            <h2>You Might Also Like</h2>
+            <div class="related-grid">
+                <div class="related-card">
+                    <img src="https://via.placeholder.com/250x150/28a745/ffffff?text=HIIT+Training" alt="HIIT Training">
+                    <div class="related-content">
+                        <h4>HIIT Training - 5 Days</h4>
+                        <p>High-intensity intervals for maximum calorie burn</p>
+                        <a href="workout.html?program=hiit-5-beginner" class="btn btn-secondary btn-small">Try This Program</a>
+                    </div>
+                </div>
+                <div class="related-card">
+                    <img src="https://via.placeholder.com/250x150/fd7e14/ffffff?text=Fat+Loss" alt="Fat Loss">
+                    <div class="related-content">
+                        <h4>Fat Loss - 3 Days</h4>
+                        <p>Efficient fat burning workouts for busy schedules</p>
+                        <a href="workout.html?program=fat-loss-3-beginner" class="btn btn-secondary btn-small">Try This Program</a>
+                    </div>
+                </div>
+                <div class="related-card">
+                    <img src="https://via.placeholder.com/250x150/6f42c1/ffffff?text=Mobility" alt="Mobility">
+                    <div class="related-content">
+                        <h4>Mobility & Flexibility - 3 Days</h4>
+                        <p>Improve range of motion and prevent injuries</p>
+                        <a href="workout.html?program=mobility-3-beginner" class="btn btn-secondary btn-small">Try This Program</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Medifit</h3>
+                    <p>Your trusted partner in fitness and wellness.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="YouTube">📺</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="archive.html">Workouts</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#nutrition">Nutrition</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#help">Help Center</a></li>
+                        <li><a href="#community">Community</a></li>
+                        <li><a href="#feedback">Feedback</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>📧 info@medifitworkout.com</p>
+                    <p>📞 (555) 123-4567</p>
+                    <p>📍 123 Fitness Street<br>Wellness City, WC 12345</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Medifit. All rights reserved. | <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>playVideo('pull-ups')">Watch Video</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/28a745/ffffff?text=Push-Ups" alt="Push-Ups">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Push-Ups</h4>
+                            <p>Strengthen your chest, shoulders, and triceps with this fundamental bodyweight exercise.</p>
+                            <div class="exercise-meta">
+                                <span>3 sets × 10-15 reps</span>
+                                <span>Rest: 60s</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('push-ups')">Watch Video</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/dc3545/ffffff?text=Dumbbell+Rows" alt="Dumbbell Rows">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Dumbbell Rows</h4>
+                            <p>Target your mid-back and rear delts for balanced development and improved posture.</p>
+                            <div class="exercise-meta">
+                                <span>3 sets × 10-12 reps</span>
+                                <span>Rest: 60-90s</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('dumbbell-rows')">Watch Video</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/fd7e14/ffffff?text=Shoulder+Press" alt="Shoulder Press">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Shoulder Press</h4>
+                            <p>Build strong, defined shoulders with overhead pressing movements.</p>
+                            <div class="exercise-meta">
+                                <span>3 sets × 8-10 reps</span>
+                                <span>Rest: 90s</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('shoulder-press')">Watch Video</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/6f42c1/ffffff?text=Tricep+Dips" alt="Tricep Dips">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Tricep Dips</h4>
+                            <p>Isolate and strengthen your triceps for better arm definition and pressing power.</p>
+                            <div class="exercise-meta">
+                                <span>3 sets × 8-12 reps</span>
+                                <span>Rest: 60s</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('tricep-dips')">Watch Video</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/20c997/ffffff?text=Bicep+Curls" alt="Bicep Curls">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Bicep Curls</h4>
+                            <p>Build arm size and strength with this classic bicep isolation exercise.</p>
+                            <div class="exercise-meta">
+                                <span>3 sets × 12-15 reps</span>
+                                <span>Rest: 45s</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('bicep-curls')">Watch Video</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 2 -->
+            <div class="workout-day" id="day2">
+                <h3>Day 2: Lower Body Power</h3>
+                <p class="day-description">Develop leg strength and power with fundamental lower body movements. Focus on building strong glutes, quads, hamstrings, and calves.</p>
+                
+                <div class="exercises-grid">
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/6f42c1/ffffff?text=Squats" alt="Squats">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Squats</h4>
+                            <p>The king of lower body exercises for overall leg development and functional strength.</p>
+                            <div class="exercise-meta">
+                                <span>4 sets × 12-15 reps</span>
+                                <span>Rest: 90s</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('squats')">Watch Video</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/20c997/ffffff?text=Lunges" alt="Lunges">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Walking Lunges</h4>
+                            <p>Unilateral leg training for balance, coordination, and single-leg strength.</p>
+                            <div class="exercise-meta">
+                                <span>3 sets × 10 reps each leg</span>
+                                <span>Rest: 60s</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('lunges')">Watch Video</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/e83e8c/ffffff?text=Deadlifts" alt="Deadlifts">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Romanian Deadlifts</h4>
+                            <p>Target your hamstrings and glutes with this hip-hinge movement pattern.</p>
+                            <div class="exercise-meta">
+                                <span>3 sets × 10-12 reps</span>
+                                <span>Rest: 90s</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('romanian-deadlifts')">Watch Video</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/6c757d/ffffff?text=Calf+Raises" alt="Calf Raises">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Calf Raises</h4>
+                            <p>Build strong, defined calves with this isolation exercise for lower leg power.</p>
+                            <div class="exercise-meta">
+                                <span>3 sets × 15-20 reps</span>
+                                <span>Rest: 45s</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('calf-raises')">Watch Video</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/fd7e14/ffffff?text=Leg+Press" alt="Leg Press">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Bulgarian Split Squats</h4>
+                            <p>Advanced single-leg exercise for increased stability and unilateral strength.</p>
+                            <div class="exercise-meta">
+                                <span>3 sets × 8-10 reps each leg</span>
+                                <span>Rest: 60s</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('bulgarian-split-squats')">Watch Video</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/28a745/ffffff?text=Glute+Bridges" alt="Glute Bridges">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Glute Bridges</h4>
+                            <p>Activate and strengthen your glutes while improving hip mobility and stability.</p>
+                            <div class="exercise-meta">
+                                <span>3 sets × 15-20 reps</span>
+                                <span>Rest: 45s</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('glute-bridges')">Watch Video</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 3 -->
+            <div class="workout-day" id="day3">
+                <h3>Day 3: Core & Conditioning</h3>
+                <p class="day-description">Strengthen your core and improve overall conditioning with functional movements that enhance stability and endurance.</p>
+                
+                <div class="exercises-grid">
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/17a2b8/ffffff?text=Planks" alt="Planks">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Planks</h4>
+                            <p>Build core stability and endurance with this fundamental isometric exercise.</p>
+                            <div class="exercise-meta">
+                                <span>3 sets × 30-60s hold</span>
+                                <span>Rest: 60s</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('planks')">Watch Video</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/dc3545/ffffff?text=Mountain+Climbers" alt="Mountain Climbers">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Mountain Climbers</h4>
+                            <p>Dynamic core exercise that combines strength training with cardiovascular conditioning.</p>
+                            <div class="exercise-meta">
+                                <span>3 sets × 30 seconds</span>
+                                <span>Rest: 60s</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('mountain-climbers')">Watch Video</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/6f42c1/ffffff?text=Russian+Twists" alt="Russian Twists">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Russian Twists</h4>
+                            <p>Target your obliques and improve rotational core strength and stability.</p>
+                            <div class="exercise-meta">
+                                <span>3 sets × 20 reps each side</span>
+                                <span>Rest: 45s</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('russian-twists')">Watch Video</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/28a745/ffffff?text=Dead+Bugs" alt="Dead Bugs">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Dead Bugs</h4>
+                            <p>Improve core stability and coordination with this controlled movement pattern.</p>
+                            <div class="exercise-meta">
+                                <span>3 sets × 10 reps each side</span>
+                                <span>Rest: 45s</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('dead-bugs')">Watch Video</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/fd7e14/ffffff?text=Burpees" alt="Burpees">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Burpees</h4>
+                            <p>Full-body conditioning exercise that combines strength, cardio, and coordination.</p>
+                            <div class="exercise-meta">
+                                <span>3 sets × 8-12 reps</span>
+                                <span>Rest: 90s</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('burpees')">Watch Video</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/e83e8c/ffffff?text=Bicycle+Crunches" alt="Bicycle Crunches">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Bicycle Crunches</h4>
+                            <p>Dynamic abdominal exercise targeting the rectus abdominis and obliques.</p>
+                            <div class="exercise-meta">
+                                <span>3 sets × 20 reps each side</span>
+                                <span>Rest: 45s</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('bicycle-crunches')">Watch Video</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 4 -->
+            <div class="workout-day" id="day4">
+                <h3>Day 4: Full Body Circuit</h3>
+                <p class="day-description">Combine strength and cardio in this full-body workout designed to maximize calorie burn and improve overall fitness.</p>
+                
+                <div class="exercises-grid">
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/4a90e2/ffffff?text=Jumping+Jacks" alt="Jumping Jacks">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Jumping Jacks</h4>
+                            <p>Classic cardio exercise to get your heart rate up and warm up your entire body.</p>
+                            <div class="exercise-meta">
+                                <span>3 sets × 30 seconds</span>
+                                <span>Rest: 30s</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('jumping-jacks')">Watch Video</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/20c997/ffffff?text=Squat+Jumps" alt="Squat Jumps">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Squat Jumps</h4>
+                            <p>Explosive lower body exercise that builds power and improves athletic performance.</p>
+                            <div class="exercise-meta">
+                                <span>3 sets × 12-15 reps</span>
+                                <span>Rest: 60s</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('squat-jumps')">Watch Video</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/dc3545/ffffff?text=Push+Up+Burpee" alt="Push-Up Burpee">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Push-Up Burpees</h4>
+                            <p>Advanced full-body exercise combining push-ups with explosive jumping movements.</p>
+                            <div class="exercise-meta">
+                                <span>3 sets × 8-10 reps</span>
+                                <span>Rest: 90s</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('pushup-burpees')">Watch Video</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/6f42c1/ffffff?text=High+Knees" alt="High Knees">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>High Knees</h4>
+                            <p>Cardio exercise that improves coordination and builds lower body endurance.</p>
+                            <div class="exercise-meta">
+                                <span>3 sets × 30 seconds</span>
+                                <span>Rest: 30s</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('high-knees')">Watch Video</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/28a745/ffffff?text=Bear+Crawl" alt="Bear Crawl">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Bear Crawl</h4>
+                            <p>Full-body movement that challenges your core, shoulders, and improves coordination.</p>
+                            <div class="exercise-meta">
+                                <span>3 sets × 30 seconds</span>
+                                <span>Rest: 60s</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('bear-crawl')">Watch Video</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/fd7e14/ffffff?text=Star+Jumps" alt="Star Jumps">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Star Jumps</h4>
+                            <p>Dynamic full-body exercise that increases heart rate and improves agility.</p>
+                            <div class="exercise-meta">
+                                <span>3 sets × 15-20 reps</span>
+                                <span>Rest: 45s</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('star-jumps')">Watch Video</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 5 -->
+            <div class="workout-day" id="day5">
+                <h3>Day 5: Recovery & Flexibility</h3>
+                <p class="day-description">Active recovery with stretching and mobility work to improve flexibility, reduce muscle tension, and enhance recovery.</p>
+                
+                <div class="exercises-grid">
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/28a745/ffffff?text=Cat+Cow+Stretch" alt="Cat-Cow Stretch">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Cat-Cow Stretch</h4>
+                            <p>Gentle spinal mobility exercise that relieves back tension and improves flexibility.</p>
+                            <div class="exercise-meta">
+                                <span>2 sets × 10-15 reps</span>
+                                <span>Hold: 2-3s each position</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('cat-cow-stretch')">Watch Video</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/17a2b8/ffffff?text=Child%27s+Pose" alt="Child's Pose">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Child's Pose</h4>
+                            <p>Restorative yoga pose that stretches the back, hips, and shoulders while promoting relaxation.</p>
+                            <div class="exercise-meta">
+                                <span>3 sets × 30-60s hold</span>
+                                <span>Focus: Deep breathing</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('childs-pose')">Watch Video</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/6f42c1/ffffff?text=Hamstring+Stretch" alt="Hamstring Stretch">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Seated Hamstring Stretch</h4>
+                            <p>Target tight hamstrings to improve lower body flexibility and reduce injury risk.</p>
+                            <div class="exercise-meta">
+                                <span>2 sets × 30s each leg</span>
+                                <span>Focus: Gentle progression</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('hamstring-stretch')">Watch Video</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/e83e8c/ffffff?text=Hip+Flexor+Stretch" alt="Hip Flexor Stretch">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Hip Flexor Stretch</h4>
+                            <p>Combat tight hip flexors from sitting and improve hip mobility and posture.</p>
+                            <div class="exercise-meta">
+                                <span>2 sets × 30s each leg</span>
+                                <span>Focus: Deep stretch</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('hip-flexor-stretch')">Watch Video</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/20c997/ffffff?text=Shoulder+Stretch" alt="Shoulder Stretch">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Cross-Body Shoulder Stretch</h4>
+                            <p>Release shoulder tension and improve upper body mobility and range of motion.</p>
+                            <div class="exercise-meta">
+                                <span>2 sets × 30s each arm</span>
+                                <span>Focus: Gentle pull</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="playVideo('shoulder-stretch')">Watch Video</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-image">
+                            <img src="https://via.placeholder.com/300x200/fd7e14/ffffff?text=Pigeon+Pose" alt="Pigeon Pose">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="exercise-info">
+                            <h4>Pigeon Pose</h4>
+                            <p>Deep hip opener that stretches the hip flexors, glutes, and piriformis muscle.</p>
+                            <div class="exercise-meta">
+                                <span>2 sets × 45s each side</span>
+                                <span>Focus: Relaxation</span>
+                            </div>
+                            <button class="btn btn-primary btn-small" onclick="
