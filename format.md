@@ -1,9 +1,3 @@
-here’s a super simple, workout-specific blueprint your client can fill in 
-(no tech jargon). it shows **what a “Worked” item is** and **which 
-variables** they choose, with the **field type** in brackets: `[text]`, 
-`[image]`, `[select]` (use `[multi-select]` when more than one choice is 
-allowed).
-
 ---
 
 # what is a “Worked” item?
