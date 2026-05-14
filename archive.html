@@ -3,43 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workout Programs - Medifit</title>
+    <meta name="theme-color" content="#0e0e10">
+    <title>Workouts — Medifit</title>
+    <link rel="icon" type="image/png" href="images/medifit-logo-white.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-page="archive">
+
+    <div class="cursor-ring" aria-hidden="true"></div>
+    <div class="cursor-dot" aria-hidden="true"></div>
+
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <h2>Medifit</h2>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="archive.html" class="nav-link active">Workouts</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link" data-num="01">Index</a></li>
+                <li><a href="archive.html" class="nav-link active" data-num="02">Workouts</a></li>
+                <li><a href="index.html#manifesto" class="nav-link" data-num="03">Method</a></li>
+                <li><a href="index.html#contact" class="nav-link" data-num="04">Contact</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <a href="index.html" class="nav-logo" aria-label="Medifit home">
+                <span class="nav-logo__mark"><img src="images/medifit-logo-white.png" alt="Medifit"></span>
+            </a>
         </div>
     </nav>
 
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <h1>Workout Programs</h1>
-            <p>Choose your fitness level and program type to get started</p>
+            <span class="mono-label" data-reveal style="display:block;margin-bottom:32px;">[ Index · 02 / Workouts ]</span>
+            <div class="page-header__grid">
+                <h1>
+                    <span class="hero__line"><span data-reveal-line>The</span></span>
+                    <span class="hero__line"><span data-reveal-line>Program</span></span>
+                    <span class="hero__line"><span data-reveal-line>Library<em style="color:var(--red);">.</em></span></span>
+                </h1>
+                <p class="lede" data-reveal data-stagger="2">
+                    Eight curated programs across five disciplines. Filter by level,
+                    pick a track, get to work. Every program is structured day-by-day,
+                    every movement is coached on video.
+                </p>
+            </div>
         </div>
     </section>
 
-    <!-- Filter Section -->
-    <section class="filters">
-        <div class="container">
+    <!-- Filter Bar (sticky) -->
+    <section class="filters" id="filters">
+        <div class="filters__container">
+            <span class="filters__label">[ Filter ]</span>
             <div class="filter-group">
-                <label>Fitness Level:</label>
+                <label for="levelFilter">Level</label>
                 <select id="levelFilter" class="filter-select">
                     <option value="">All Levels</option>
                     <option value="beginner">Beginner</option>
@@ -47,159 +65,154 @@
                 </select>
             </div>
             <div class="filter-group">
-                <label>Program Duration:</label>
+                <label for="durationFilter">Duration</label>
                 <select id="durationFilter" class="filter-select">
                     <option value="">All Durations</option>
-                    <option value="3-days">3 Days Program</option>
-                    <option value="5-days">5 Days Program</option>
+                    <option value="3-days">3 Days</option>
+                    <option value="5-days">5 Days</option>
                 </select>
             </div>
             <div class="filter-group">
-                <label>Workout Type:</label>
+                <label for="typeFilter">Discipline</label>
                 <select id="typeFilter" class="filter-select">
                     <option value="">All Types</option>
-                    <option value="mobility">Mobility & Flexibility</option>
+                    <option value="mobility">Mobility</option>
                     <option value="muscle-gain">Muscle Gain</option>
                     <option value="fat-loss">Fat Loss</option>
-                    <option value="hiit">HIIT Training</option>
+                    <option value="hiit">HIIT</option>
                     <option value="crossfit">CrossFit</option>
                 </select>
             </div>
         </div>
     </section>
 
-    <!-- Workout Programs Grid -->
-    <section class="programs">
+    <!-- Programs grid -->
+    <section class="programs" id="programs">
         <div class="container">
+
+            <div class="programs-counter" id="programsCounter">
+                <span>Showing <strong id="visibleCount">08</strong> / 08 programs</span>
+                <span>Sort: Newest</span>
+            </div>
+
             <div class="programs-grid" id="programsGrid">
-                <!-- Beginner Programs -->
-                <div class="program-card" data-level="beginner" data-duration="3-days" data-type="mobility">
-                    <div class="program-image">
-                        <img src="https://placehold.co/300x200/28a745/ffffff?text=Mobility+%26+Flexibility" alt="Mobility & Flexibility">
-                        <div class="program-badge">Beginner</div>
-                    </div>
-                    <div class="program-content">
-                        <h3>Mobility & Flexibility - 3 Days</h3>
-                        <p>Improve your range of motion and flexibility with gentle stretching routines.</p>
-                        <div class="program-meta">
-                            <span class="duration">3 Days</span>
-                            <span class="level">Beginner</span>
-                        </div>
-                        <a href="workout.html?program=mobility-3-beginner" class="btn btn-primary btn-small">Start Program</a>
-                    </div>
-                </div>
 
-                <div class="program-card" data-level="beginner" data-duration="5-days" data-type="muscle-gain">
-                    <div class="program-image">
-                        <img src="https://placehold.co/300x200/dc3545/ffffff?text=Muscle+Gain" alt="Muscle Gain">
-                        <div class="program-badge">Beginner</div>
+                <a href="workout.html?program=mobility-3-beginner" class="program-card" data-level="beginner" data-duration="3-days" data-type="mobility" data-image="https://placehold.co/640x480/1f1f23/ed2124?text=Mobility" data-reveal data-stagger="1">
+                    <span class="program-card__num">01 / 08</span>
+                    <h2 class="program-card__title">Mobility &amp; Flexibility</h2>
+                    <div class="program-card__meta">
+                        <span><span class="program-card__level">Beginner</span></span>
+                        <span>3 Days</span>
+                        <span>Mobility</span>
                     </div>
-                    <div class="program-content">
-                        <h3>Muscle Gain - 5 Days</h3>
-                        <p>Build lean muscle mass with progressive strength training exercises.</p>
-                        <div class="program-meta">
-                            <span class="duration">5 Days</span>
-                            <span class="level">Beginner</span>
-                        </div>
-                        <a href="workout.html?program=muscle-gain-5-beginner" class="btn btn-primary btn-small">Start Program</a>
-                    </div>
-                </div>
+                    <div class="program-card__arrow" aria-hidden="true">→</div>
+                </a>
 
-                <div class="program-card" data-level="beginner" data-duration="3-days" data-type="fat-loss">
-                    <div class="program-image">
-                        <img src="https://placehold.co/300x200/fd7e14/ffffff?text=Fat+Loss" alt="Fat Loss">
-                        <div class="program-badge">Beginner</div>
+                <a href="workout.html?program=muscle-gain-5-beginner" class="program-card" data-level="beginner" data-duration="5-days" data-type="muscle-gain" data-image="https://placehold.co/640x480/1f1f23/ed2124?text=Muscle+Gain" data-reveal data-stagger="2">
+                    <span class="program-card__num">02 / 08</span>
+                    <h2 class="program-card__title">Muscle Gain — 5 Days</h2>
+                    <div class="program-card__meta">
+                        <span><span class="program-card__level">Beginner</span></span>
+                        <span>5 Days</span>
+                        <span>Strength</span>
                     </div>
-                    <div class="program-content">
-                        <h3>Fat Loss - 3 Days</h3>
-                        <p>Burn calories and shed unwanted fat with effective cardio and strength combos.</p>
-                        <div class="program-meta">
-                            <span class="duration">3 Days</span>
-                            <span class="level">Beginner</span>
-                        </div>
-                        <a href="workout.html?program=fat-loss-3-beginner" class="btn btn-primary btn-small">Start Program</a>
-                    </div>
-                </div>
+                    <div class="program-card__arrow" aria-hidden="true">→</div>
+                </a>
 
-                <div class="program-card" data-level="beginner" data-duration="5-days" data-type="hiit">
-                    <div class="program-image">
-                        <img src="https://placehold.co/300x200/6f42c1/ffffff?text=HIIT+Training" alt="HIIT Training">
-                        <div class="program-badge">Beginner</div>
+                <a href="workout.html?program=fat-loss-3-beginner" class="program-card" data-level="beginner" data-duration="3-days" data-type="fat-loss" data-image="https://placehold.co/640x480/1f1f23/ed2124?text=Fat+Loss" data-reveal data-stagger="3">
+                    <span class="program-card__num">03 / 08</span>
+                    <h2 class="program-card__title">Fat Loss — 3 Days</h2>
+                    <div class="program-card__meta">
+                        <span><span class="program-card__level">Beginner</span></span>
+                        <span>3 Days</span>
+                        <span>Conditioning</span>
                     </div>
-                    <div class="program-content">
-                        <h3>HIIT Training - 5 Days</h3>
-                        <p>High-intensity interval training for maximum results in minimum time.</p>
-                        <div class="program-meta">
-                            <span class="duration">5 Days</span>
-                            <span class="level">Beginner</span>
-                        </div>
-                        <a href="workout.html?program=hiit-5-beginner" class="btn btn-primary btn-small">Start Program</a>
-                    </div>
-                </div>
+                    <div class="program-card__arrow" aria-hidden="true">→</div>
+                </a>
 
-                <!-- Advanced Programs -->
-                <div class="program-card" data-level="advanced" data-duration="5-days" data-type="crossfit">
-                    <div class="program-image">
-                        <img src="https://placehold.co/300x200/20c997/ffffff?text=CrossFit" alt="CrossFit">
-                        <div class="program-badge advanced">Advanced</div>
+                <a href="workout.html?program=hiit-5-beginner" class="program-card" data-level="beginner" data-duration="5-days" data-type="hiit" data-image="https://placehold.co/640x480/1f1f23/ed2124?text=HIIT" data-reveal data-stagger="4">
+                    <span class="program-card__num">04 / 08</span>
+                    <h2 class="program-card__title">HIIT Training</h2>
+                    <div class="program-card__meta">
+                        <span><span class="program-card__level">Beginner</span></span>
+                        <span>5 Days</span>
+                        <span>Intervals</span>
                     </div>
-                    <div class="program-content">
-                        <h3>CrossFit - 5 Days</h3>
-                        <p>Functional fitness combining strength, cardio, and gymnastics movements.</p>
-                        <div class="program-meta">
-                            <span class="duration">5 Days</span>
-                            <span class="level">Advanced</span>
-                        </div>
-                        <a href="workout.html?program=crossfit-5-advanced" class="btn btn-primary btn-small">Start Program</a>
-                    </div>
-                </div>
+                    <div class="program-card__arrow" aria-hidden="true">→</div>
+                </a>
 
-                <div class="program-card" data-level="advanced" data-duration="3-days" data-type="muscle-gain">
-                    <div class="program-image">
-                        <img src="https://placehold.co/300x200/dc3545/ffffff?text=Advanced+Muscle" alt="Advanced Muscle Gain">
-                        <div class="program-badge advanced">Advanced</div>
+                <a href="workout.html?program=crossfit-5-advanced" class="program-card" data-level="advanced" data-duration="5-days" data-type="crossfit" data-image="https://placehold.co/640x480/1f1f23/ed2124?text=CrossFit" data-reveal data-stagger="5">
+                    <span class="program-card__num">05 / 08</span>
+                    <h2 class="program-card__title">CrossFit — 5 Days</h2>
+                    <div class="program-card__meta">
+                        <span><span class="program-card__level program-card__level--advanced">Advanced</span></span>
+                        <span>5 Days</span>
+                        <span>Functional</span>
                     </div>
-                    <div class="program-content">
-                        <h3>Advanced Muscle Gain - 3 Days</h3>
-                        <p>Intensive muscle building with heavy compound movements and advanced techniques.</p>
-                        <div class="program-meta">
-                            <span class="duration">3 Days</span>
-                            <span class="level">Advanced</span>
-                        </div>
-                        <a href="workout.html?program=muscle-gain-3-advanced" class="btn btn-primary btn-small">Start Program</a>
-                    </div>
-                </div>
+                    <div class="program-card__arrow" aria-hidden="true">→</div>
+                </a>
 
-                <div class="program-card" data-level="advanced" data-duration="5-days" data-type="fat-loss">
-                    <div class="program-image">
-                        <img src="https://placehold.co/300x200/fd7e14/ffffff?text=Advanced+Fat+Loss" alt="Advanced Fat Loss">
-                        <div class="program-badge advanced">Advanced</div>
+                <a href="workout.html?program=muscle-gain-3-advanced" class="program-card" data-level="advanced" data-duration="3-days" data-type="muscle-gain" data-image="https://placehold.co/640x480/1f1f23/ed2124?text=Heavy" data-reveal data-stagger="6">
+                    <span class="program-card__num">06 / 08</span>
+                    <h2 class="program-card__title">Advanced Muscle Gain</h2>
+                    <div class="program-card__meta">
+                        <span><span class="program-card__level program-card__level--advanced">Advanced</span></span>
+                        <span>3 Days</span>
+                        <span>Heavy Compound</span>
                     </div>
-                    <div class="program-content">
-                        <h3>Advanced Fat Loss - 5 Days</h3>
-                        <p>High-intensity fat burning with complex movement patterns and metabolic conditioning.</p>
-                        <div class="program-meta">
-                            <span class="duration">5 Days</span>
-                            <span class="level">Advanced</span>
-                        </div>
-                        <a href="workout.html?program=fat-loss-5-advanced" class="btn btn-primary btn-small">Start Program</a>
-                    </div>
-                </div>
+                    <div class="program-card__arrow" aria-hidden="true">→</div>
+                </a>
 
-                <div class="program-card" data-level="advanced" data-duration="3-days" data-type="mobility">
-                    <div class="program-image">
-                        <img src="https://placehold.co/300x200/28a745/ffffff?text=Advanced+Mobility" alt="Advanced Mobility">
-                        <div class="program-badge advanced">Advanced</div>
+                <a href="workout.html?program=fat-loss-5-advanced" class="program-card" data-level="advanced" data-duration="5-days" data-type="fat-loss" data-image="https://placehold.co/640x480/1f1f23/ed2124?text=Metcon" data-reveal data-stagger="7">
+                    <span class="program-card__num">07 / 08</span>
+                    <h2 class="program-card__title">Advanced Fat Loss</h2>
+                    <div class="program-card__meta">
+                        <span><span class="program-card__level program-card__level--advanced">Advanced</span></span>
+                        <span>5 Days</span>
+                        <span>Metabolic</span>
                     </div>
-                    <div class="program-content">
-                        <h3>Advanced Mobility - 3 Days</h3>
-                        <p>Deep tissue work and advanced flexibility techniques for elite performance.</p>
-                        <div class="program-meta">
-                            <span class="duration">3 Days</span>
-                            <span class="level">Advanced</span>
-                        </div>
-                        <a href="workout.html?program=mobility-3-advanced" class="btn btn-primary btn-small">Start Program</a>
+                    <div class="program-card__arrow" aria-hidden="true">→</div>
+                </a>
+
+                <a href="workout.html?program=mobility-3-advanced" class="program-card" data-level="advanced" data-duration="3-days" data-type="mobility" data-image="https://placehold.co/640x480/1f1f23/ed2124?text=Deep+Mobility" data-reveal data-stagger="8">
+                    <span class="program-card__num">08 / 08</span>
+                    <h2 class="program-card__title">Advanced Mobility</h2>
+                    <div class="program-card__meta">
+                        <span><span class="program-card__level program-card__level--advanced">Advanced</span></span>
+                        <span>3 Days</span>
+                        <span>Deep Tissue</span>
                     </div>
+                    <div class="program-card__arrow" aria-hidden="true">→</div>
+                </a>
+
+            </div>
+
+            <div class="programs__empty" id="programsEmpty">
+                [ No programs match these filters · reset to view all ]
+            </div>
+        </div>
+
+        <!-- Floating preview image -->
+        <div class="program-card__preview" id="programPreview" aria-hidden="true">
+            <img src="" alt="">
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="cta__bg" aria-hidden="true"></div>
+        <div class="container">
+            <div class="cta__content">
+                <h2 data-reveal data-reveal-clip>
+                    Can't decide?<br><span>Start with mobility.</span>
+                </h2>
+                <p class="lede" data-reveal data-stagger="1">
+                    Three days of stretching and light flow. The foundation every other program builds on.
+                </p>
+                <div data-reveal data-stagger="2">
+                    <a href="workout.html?program=mobility-3-beginner" class="btn btn-primary btn-large">
+                        Open program 01 <span class="arrow">→</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -208,32 +221,54 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Medifit</h3>
-                    <p>Your trusted partner in fitness and wellness.</p>
+            <div class="footer__wordmark" aria-hidden="true">MEDIFIT<span>.</span></div>
+            <div class="footer__grid">
+                <div class="footer__col">
+                    <h4>[ Studio ]</h4>
+                    <p>A workout system from Medifit Wellness. Designed by physiotherapists, used by people who actually train.</p>
+                    <div class="footer__social" style="margin-top:24px;">
+                        <a href="#">IG</a><a href="#">YT</a><a href="#">X</a><a href="#">EM</a>
+                    </div>
                 </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
+                <div class="footer__col">
+                    <h4>[ Navigate ]</h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html">Index</a></li>
                         <li><a href="archive.html">Workouts</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="index.html#manifesto">Method</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>Email: info@medifitworkout.com</p>
-                    <p>Phone: (555) 123-4567</p>
+                <div class="footer__col">
+                    <h4>[ Programs ]</h4>
+                    <ul>
+                        <li><a href="archive.html?type=muscle-gain">Muscle Gain</a></li>
+                        <li><a href="archive.html?type=fat-loss">Fat Loss</a></li>
+                        <li><a href="archive.html?type=mobility">Mobility</a></li>
+                        <li><a href="archive.html?type=hiit">HIIT</a></li>
+                        <li><a href="archive.html?type=crossfit">CrossFit</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4>[ Contact ]</h4>
+                    <p>info@medifitworkout.com</p>
+                    <p>+91 · (000) 000 0000</p>
+                    <p>Medifit Wellness Studio</p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Medifit. All rights reserved.</p>
+            <div class="footer__bottom">
+                <span>© 2026 Medifit · All rights reserved</span>
+                <span>
+                    <a href="#privacy">Privacy</a>
+                    <a href="#terms">Terms</a>
+                </span>
             </div>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -3,112 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medifit - Your Fitness Journey Starts Here</title>
+    <meta name="theme-color" content="#0e0e10">
+    <title>Medifit — Train With Intention</title>
+    <meta name="description" content="Curated workout programs from Medifit. Strength, mobility, conditioning. Train with intention.">
+    <link rel="icon" type="image/png" href="images/medifit-logo-white.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-page="home">
+
+    <!-- Custom cursor -->
+    <div class="cursor-ring" aria-hidden="true"></div>
+    <div class="cursor-dot" aria-hidden="true"></div>
+
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <h2>Medifit</h2>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link active">Home</a></li>
-                <li><a href="archive.html" class="nav-link">Workouts</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link active" data-num="01">Index</a></li>
+                <li><a href="archive.html" class="nav-link" data-num="02">Workouts</a></li>
+                <li><a href="#manifesto" class="nav-link" data-num="03">Method</a></li>
+                <li><a href="#contact" class="nav-link" data-num="04">Contact</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <a href="index.html" class="nav-logo" aria-label="Medifit home">
+                <span class="nav-logo__mark">
+                    <img src="images/medifit-logo-white.png" alt="Medifit">
+                </span>
+            </a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Transform Your Body, Transform Your Life</h1>
-            <p>Curated fitness programs for all levels. Start your journey today.</p>
-            <div class="hero-buttons">
-                <a href="archive.html" class="btn btn-primary">Start Workout</a>
-                <a href="#features" class="btn btn-secondary">Learn More</a>
+    <!-- HERO -->
+    <header class="hero">
+        <div class="hero__media" aria-hidden="true">
+            <video class="hero__video" autoplay muted loop playsinline preload="auto"
+                   poster="images/medifit-logo-white.png">
+                <source src="https://medifitwellness.in/wp-content/uploads/2025/01/medifitHerovideo.mp4" type="video/mp4">
+            </video>
+            <div class="hero__overlay"></div>
+        </div>
+
+        <div class="container hero__inner">
+            <h1 class="hero__title display">
+                <span class="hero__line"><span data-reveal-line>Train with</span></span>
+                <span class="hero__line hero__line--indent"><span data-reveal-line>intention<em class="hero__line--accent">.</em></span></span>
+                <span class="hero__line"><span data-reveal-line>Move</span></span>
+                <span class="hero__line hero__line--indent"><span data-reveal-line>like it matters.</span></span>
+            </h1>
+
+            <div class="hero__bottom">
+                <div class="hero__buttons">
+                    <a href="archive.html" class="btn btn-primary" data-reveal data-stagger="1">
+                        Start a program <span class="arrow">→</span>
+                    </a>
+                    <a href="#manifesto" class="btn btn-secondary" data-reveal data-stagger="2">
+                        Read the method
+                    </a>
+                </div>
+                <span class="mono-label hero__scroll" data-reveal data-stagger="3">
+                    Scroll <span aria-hidden="true">↓</span>
+                </span>
             </div>
         </div>
-        <div class="hero-image">
-            <img src="https://placehold.co/600x400/4a90e2/ffffff?text=Fitness+Hero" alt="Fitness Hero">
+    </header>
+
+    <!-- TICKER -->
+    <section class="ticker" aria-hidden="true">
+        <div class="ticker__track" id="tickerTrack">
+            <span class="ticker__item">Strength</span>
+            <span class="ticker__item">Mobility</span>
+            <span class="ticker__item">HIIT</span>
+            <span class="ticker__item">CrossFit</span>
+            <span class="ticker__item">Muscle Gain</span>
+            <span class="ticker__item">Fat Loss</span>
+            <span class="ticker__item">Recovery</span>
+            <!-- duplicated for seamless loop -->
+            <span class="ticker__item">Strength</span>
+            <span class="ticker__item">Mobility</span>
+            <span class="ticker__item">HIIT</span>
+            <span class="ticker__item">CrossFit</span>
+            <span class="ticker__item">Muscle Gain</span>
+            <span class="ticker__item">Fat Loss</span>
+            <span class="ticker__item">Recovery</span>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="features">
+    <!-- FEATURES / MANIFESTO TILES -->
+    <section class="section" id="features">
         <div class="container">
-            <h2>Why Choose Medifit?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🏋️</div>
-                    <h3>All Fitness Levels</h3>
-                    <p>From beginner to advanced, we have programs tailored for everyone.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📅</div>
-                    <h3>Flexible Schedules</h3>
-                    <p>Choose between 3-day or 5-day workout programs that fit your lifestyle.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Targeted Training</h3>
-                    <p>Specialized programs for muscle gain, fat loss, HIIT, CrossFit, and mobility.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>Video Guidance</h3>
-                    <p>High-quality instructional videos for every exercise.</p>
+            <div class="section__head">
+                <span class="mono-label" data-reveal>[ Method · 02 ]</span>
+                <h2 data-reveal data-stagger="1">
+                    Four principles that<br>
+                    shape every session.
+                </h2>
+            </div>
+        </div>
+
+        <div class="features-grid">
+            <article class="feature" data-reveal data-stagger="1">
+                <div class="feature__num"><span>01 — Form</span><span>●</span></div>
+                <div class="feature__icon" aria-hidden="true">⌬</div>
+                <h3>Built for any body, not the average one.</h3>
+                <p>Programs are tuned for beginners and advanced athletes alike — same movements, different load, real progression.</p>
+            </article>
+            <article class="feature" data-reveal data-stagger="2">
+                <div class="feature__num"><span>02 — Time</span><span>●</span></div>
+                <div class="feature__icon" aria-hidden="true">◷</div>
+                <h3>3-day or 5-day splits. Nothing in between.</h3>
+                <p>Sessions are designed to land in 30 to 45 minutes — long enough to matter, short enough to keep.</p>
+            </article>
+            <article class="feature" data-reveal data-stagger="3">
+                <div class="feature__num"><span>03 — Focus</span><span>●</span></div>
+                <div class="feature__icon" aria-hidden="true">▲</div>
+                <h3>Specific tracks. No generic templates.</h3>
+                <p>Muscle gain, fat loss, mobility, HIIT, CrossFit. Pick the goal, follow the track, don't second-guess.</p>
+            </article>
+            <article class="feature" data-reveal data-stagger="4">
+                <div class="feature__num"><span>04 — Form</span><span>●</span></div>
+                <div class="feature__icon" aria-hidden="true">▶</div>
+                <h3>Watch the move before you make it.</h3>
+                <p>Every exercise ships with a coaching video. No guessing your way through a movement you've never been taught.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- MANIFESTO + STATS -->
+    <section class="manifesto" id="manifesto">
+        <div class="container">
+            <div class="section__head">
+                <span class="mono-label" data-reveal>[ Manifesto · 03 ]</span>
+                <h2 data-reveal data-stagger="1">A method, not<br>a marketplace.</h2>
+            </div>
+
+            <div class="manifesto__grid">
+                <p class="manifesto__text" data-reveal data-stagger="1">
+                    The fitness internet is loud. We're not. <strong>We build programs</strong> that
+                    physiotherapists endorse and athletes finish — then we get out of the way.
+                </p>
+
+                <div class="manifesto__stats">
+                    <div class="stat" data-reveal data-stagger="2">
+                        <div class="stat__num">12<sup>+</sup></div>
+                        <div class="stat__label">Curated programs</div>
+                    </div>
+                    <div class="stat" data-reveal data-stagger="3">
+                        <div class="stat__num">3 → 5</div>
+                        <div class="stat__label">Days per week</div>
+                    </div>
+                    <div class="stat" data-reveal data-stagger="4">
+                        <div class="stat__num">100<sup>%</sup></div>
+                        <div class="stat__label">Video-coached</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta">
+    <!-- CTA -->
+    <section class="cta" id="contact">
+        <div class="cta__bg" aria-hidden="true"></div>
         <div class="container">
-            <h2>Ready to Start Your Fitness Journey?</h2>
-            <p>Join thousands of people who have transformed their lives with Medifit</p>
-            <a href="archive.html" class="btn btn-primary btn-large">Browse Workouts</a>
+            <div class="cta__content">
+                <h2 data-reveal data-reveal-clip>
+                    Stop scrolling. <span>Start moving.</span>
+                </h2>
+                <div data-reveal data-stagger="1" style="display:flex;gap:16px;flex-wrap:wrap;">
+                    <a href="archive.html" class="btn btn-primary btn-large">
+                        Browse workouts <span class="arrow">→</span>
+                    </a>
+                    <a href="#manifesto" class="btn btn-secondary btn-large">
+                        About the method
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Medifit</h3>
-                    <p>Your trusted partner in fitness and wellness.</p>
+            <div class="footer__wordmark" aria-hidden="true">
+                MEDIFIT<span>.</span>
+            </div>
+
+            <div class="footer__grid">
+                <div class="footer__col">
+                    <h4>[ Studio ]</h4>
+                    <p>A workout system from Medifit Wellness. Designed by physiotherapists, used by people who actually train.</p>
+                    <div class="footer__social" style="margin-top:24px;">
+                        <a href="#" aria-label="Instagram">IG</a>
+                        <a href="#" aria-label="YouTube">YT</a>
+                        <a href="#" aria-label="X">X</a>
+                        <a href="#" aria-label="Email">EM</a>
+                    </div>
                 </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
+                <div class="footer__col">
+                    <h4>[ Navigate ]</h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html">Index</a></li>
                         <li><a href="archive.html">Workouts</a></li>
-                        <li><a href="#about">About</a></li>
+                        <li><a href="#manifesto">Method</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>Email: info@medifitworkout.com</p>
-                    <p>Phone: (555) 123-4567</p>
+                <div class="footer__col">
+                    <h4>[ Programs ]</h4>
+                    <ul>
+                        <li><a href="archive.html?type=muscle-gain">Muscle Gain</a></li>
+                        <li><a href="archive.html?type=fat-loss">Fat Loss</a></li>
+                        <li><a href="archive.html?type=mobility">Mobility</a></li>
+                        <li><a href="archive.html?type=hiit">HIIT</a></li>
+                        <li><a href="archive.html?type=crossfit">CrossFit</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4>[ Contact ]</h4>
+                    <p>info@medifitworkout.com</p>
+                    <p>+91 · (000) 000 0000</p>
+                    <p>Medifit Wellness Studio</p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Medifit. All rights reserved.</p>
+
+            <div class="footer__bottom">
+                <span>© 2026 Medifit · All rights reserved</span>
+                <span>
+                    <a href="#privacy">Privacy</a>
+                    <a href="#terms">Terms</a>
+                </span>
             </div>
         </div>
     </footer>
 
+    <!-- Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

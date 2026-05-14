@@ -3,56 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workout Program - Medifit</title>
+    <meta name="theme-color" content="#0e0e10">
+    <title>Workout Program — Medifit</title>
+    <link rel="icon" type="image/png" href="images/medifit-logo-white.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar">
+<body data-page="workout">
+
+    <div class="cursor-ring" aria-hidden="true"></div>
+    <div class="cursor-dot" aria-hidden="true"></div>
+
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <h2>Medifit</h2>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="archive.html" class="nav-link">Workouts</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link" data-num="01">Index</a></li>
+                <li><a href="archive.html" class="nav-link" data-num="02">Workouts</a></li>
+                <li><a href="index.html#manifesto" class="nav-link" data-num="03">Method</a></li>
+                <li><a href="index.html#contact" class="nav-link" data-num="04">Contact</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <a href="index.html" class="nav-logo" aria-label="Medifit home">
+                <span class="nav-logo__mark"><img src="images/medifit-logo-white.png" alt="Medifit"></span>
+            </a>
         </div>
     </nav>
 
     <!-- Workout Header -->
     <section class="workout-header">
         <div class="container">
-            <div class="breadcrumb">
-                <a href="index.html">Home</a> > <a href="archive.html">Workouts</a> > <span id="currentProgram">Current Program</span>
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">Index</a>
+                <span class="sep">/</span>
+                <a href="archive.html">Workouts</a>
+                <span class="sep">/</span>
+                <span id="currentProgram">Muscle Gain — 5 Days</span>
+            </nav>
+
+            <div class="workout-header__grid">
+                <h1 class="workout-header__title">
+                    <span class="hero__line"><span data-reveal-line id="programTitle">Muscle Gain — 5 Days.</span></span>
+                </h1>
+                <div>
+                    <div class="program-info" data-reveal data-stagger="1">
+                        <span class="info-badge info-badge--accent" id="programLevel">Beginner</span>
+                        <span class="info-badge" id="programDuration">5 Days</span>
+                        <span class="info-badge" id="programType">Muscle Gain</span>
+                    </div>
+                    <p class="workout-header__lede" id="programDescription" data-reveal data-stagger="2" style="margin-top:32px;">
+                        Build lean muscle mass with progressive strength training exercises designed for beginners.
+                    </p>
+                </div>
             </div>
-            <h1 id="programTitle">Muscle Gain - 5 Days Program</h1>
-            <div class="program-info">
-                <span class="info-badge" id="programLevel">Beginner</span>
-                <span class="info-badge" id="programDuration">5 Days</span>
-                <span class="info-badge" id="programType">Muscle Gain</span>
-            </div>
-            <p id="programDescription">Build lean muscle mass with progressive strength training exercises designed for beginners.</p>
         </div>
     </section>
 
     <!-- Day Navigation -->
     <section class="day-navigation">
         <div class="container">
-            <h2>Choose Your Workout Day</h2>
-            <div class="day-tabs" id="dayTabs">
-                <button class="day-tab active" data-day="1">Day 1</button>
-                <button class="day-tab" data-day="2">Day 2</button>
-                <button class="day-tab" data-day="3">Day 3</button>
-                <button class="day-tab" data-day="4">Day 4</button>
-                <button class="day-tab" data-day="5">Day 5</button>
+            <h2>[ Choose your day ]</h2>
+            <div class="day-tabs" id="dayTabs" role="tablist">
+                <button class="day-tab active" data-day="1" role="tab" aria-selected="true">
+                    <span class="day-tab__num">DAY 01</span>
+                    <span class="day-tab__name">Upper Body</span>
+                </button>
+                <button class="day-tab" data-day="2" role="tab" aria-selected="false">
+                    <span class="day-tab__num">DAY 02</span>
+                    <span class="day-tab__name">Lower Body</span>
+                </button>
+                <button class="day-tab" data-day="3" role="tab" aria-selected="false">
+                    <span class="day-tab__num">DAY 03</span>
+                    <span class="day-tab__name">Core &amp; Conditioning</span>
+                </button>
+                <button class="day-tab" data-day="4" role="tab" aria-selected="false">
+                    <span class="day-tab__num">DAY 04</span>
+                    <span class="day-tab__name">Upper Strength</span>
+                </button>
+                <button class="day-tab" data-day="5" role="tab" aria-selected="false">
+                    <span class="day-tab__num">DAY 05</span>
+                    <span class="day-tab__name">Full Body</span>
+                </button>
             </div>
         </div>
     </section>
@@ -60,396 +93,422 @@
     <!-- Workout Content -->
     <section class="workout-content">
         <div class="container">
+
             <!-- Day 1 -->
-            <div class="workout-day active" id="day1">
-                <h3>Day 1: Upper Body Foundation</h3>
-                <p class="day-description">Focus on building upper body strength with basic compound movements. Perfect for developing chest, back, shoulders, and arms.</p>
-                
+            <article class="workout-day active" id="day1" role="tabpanel">
+                <header class="workout-day__head">
+                    <h3>Day 01<span>.</span><br>Upper Body Foundation</h3>
+                    <p class="day-description">
+                        Build upper body strength through fundamental compound pulls and presses. Chest, back, shoulders, arms — in that order, and with intent.
+                    </p>
+                </header>
                 <div class="exercises-grid">
-                    <div class="exercise-card">
+                    <div class="exercise-card" data-reveal data-stagger="1">
+                        <span class="exercise-card__num">01</span>
                         <div class="exercise-image">
-                            <img src="https://placehold.co/300x200/4a90e2/ffffff?text=Pull-Ups" alt="Pull-Ups">
-                            <div class="play-button">▶</div>
+                            <img src="https://placehold.co/640x480/1f1f23/ed2124?text=Pull-Ups" alt="Pull-Ups">
+                            <div class="play-button" aria-hidden="true"><span>▶</span></div>
                         </div>
                         <div class="exercise-info">
                             <h4>Pull-Ups</h4>
                             <p>Build back and bicep strength with this classic exercise. Great for developing a V-shaped torso.</p>
                             <div class="exercise-meta">
-                                <span>3 sets × 8-12 reps</span>
-                                <span>Rest: 60-90s</span>
+                                <span data-label="Volume">3 × 8–12</span>
+                                <span data-label="Rest">60–90s</span>
                             </div>
-                            <button class="btn btn-primary btn-small" onclick="playVideo('pull-ups')">Watch Video</button>
                         </div>
+                        <button class="exercise-card__cta" onclick="playVideo('pull-ups')" aria-label="Watch pull-ups video"></button>
                     </div>
-                    
-                    <div class="exercise-card">
+
+                    <div class="exercise-card" data-reveal data-stagger="2">
+                        <span class="exercise-card__num">02</span>
                         <div class="exercise-image">
-                            <img src="https://placehold.co/300x200/28a745/ffffff?text=Push-Ups" alt="Push-Ups">
-                            <div class="play-button">▶</div>
+                            <img src="https://placehold.co/640x480/1f1f23/ed2124?text=Push-Ups" alt="Push-Ups">
+                            <div class="play-button" aria-hidden="true"><span>▶</span></div>
                         </div>
                         <div class="exercise-info">
                             <h4>Push-Ups</h4>
                             <p>Classic bodyweight exercise for chest, shoulders, and triceps development.</p>
                             <div class="exercise-meta">
-                                <span>3 sets × 10-15 reps</span>
-                                <span>Rest: 60s</span>
+                                <span data-label="Volume">3 × 10–15</span>
+                                <span data-label="Rest">60s</span>
                             </div>
-                            <button class="btn btn-primary btn-small" onclick="playVideo('push-ups')">Watch Video</button>
                         </div>
+                        <button class="exercise-card__cta" onclick="playVideo('push-ups')" aria-label="Watch push-ups video"></button>
                     </div>
-                    
-                    <div class="exercise-card">
+
+                    <div class="exercise-card" data-reveal data-stagger="3">
+                        <span class="exercise-card__num">03</span>
                         <div class="exercise-image">
-                            <img src="https://placehold.co/300x200/dc3545/ffffff?text=Dumbbell+Rows" alt="Dumbbell Rows">
-                            <div class="play-button">▶</div>
+                            <img src="https://placehold.co/640x480/1f1f23/ed2124?text=DB+Rows" alt="Dumbbell Rows">
+                            <div class="play-button" aria-hidden="true"><span>▶</span></div>
                         </div>
                         <div class="exercise-info">
                             <h4>Dumbbell Rows</h4>
                             <p>Strengthen your back muscles and improve posture with this essential pulling exercise.</p>
                             <div class="exercise-meta">
-                                <span>3 sets × 10-12 reps each arm</span>
-                                <span>Rest: 60-90s</span>
+                                <span data-label="Volume">3 × 10–12 / arm</span>
+                                <span data-label="Rest">60–90s</span>
                             </div>
-                            <button class="btn btn-primary btn-small" onclick="playVideo('dumbbell-rows')">Watch Video</button>
                         </div>
+                        <button class="exercise-card__cta" onclick="playVideo('dumbbell-rows')" aria-label="Watch dumbbell rows video"></button>
                     </div>
-                    
-                    <div class="exercise-card">
+
+                    <div class="exercise-card" data-reveal data-stagger="4">
+                        <span class="exercise-card__num">04</span>
                         <div class="exercise-image">
-                            <img src="https://placehold.co/300x200/fd7e14/ffffff?text=Shoulder+Press" alt="Shoulder Press">
-                            <div class="play-button">▶</div>
+                            <img src="https://placehold.co/640x480/1f1f23/ed2124?text=Shoulder+Press" alt="Shoulder Press">
+                            <div class="play-button" aria-hidden="true"><span>▶</span></div>
                         </div>
                         <div class="exercise-info">
                             <h4>Shoulder Press</h4>
                             <p>Build strong, defined shoulders with this fundamental pressing movement.</p>
                             <div class="exercise-meta">
-                                <span>3 sets × 8-12 reps</span>
-                                <span>Rest: 60-90s</span>
+                                <span data-label="Volume">3 × 8–12</span>
+                                <span data-label="Rest">60–90s</span>
                             </div>
-                            <button class="btn btn-primary btn-small" onclick="playVideo('shoulder-press')">Watch Video</button>
                         </div>
+                        <button class="exercise-card__cta" onclick="playVideo('shoulder-press')" aria-label="Watch shoulder press video"></button>
                     </div>
                 </div>
-            </div>
-            
+            </article>
+
             <!-- Day 2 -->
-            <div class="workout-day" id="day2">
-                <h3>Day 2: Lower Body Power</h3>
-                <p class="day-description">Develop strong, powerful legs with compound movements that target your glutes, quads, hamstrings, and calves.</p>
-                
+            <article class="workout-day" id="day2" role="tabpanel">
+                <header class="workout-day__head">
+                    <h3>Day 02<span>.</span><br>Lower Body Power</h3>
+                    <p class="day-description">
+                        Strong, powerful legs through compound movements targeting glutes, quads, hamstrings, calves. Hinge, squat, drive.
+                    </p>
+                </header>
                 <div class="exercises-grid">
-                    <div class="exercise-card">
+                    <div class="exercise-card" data-reveal data-stagger="1">
+                        <span class="exercise-card__num">01</span>
                         <div class="exercise-image">
-                            <img src="https://placehold.co/300x200/6f42c1/ffffff?text=Squats" alt="Squats">
-                            <div class="play-button">▶</div>
+                            <img src="https://placehold.co/640x480/1f1f23/ed2124?text=Squats" alt="Squats">
+                            <div class="play-button" aria-hidden="true"><span>▶</span></div>
                         </div>
                         <div class="exercise-info">
                             <h4>Squats</h4>
                             <p>The king of leg exercises. Build overall lower body strength and power.</p>
                             <div class="exercise-meta">
-                                <span>4 sets × 12-15 reps</span>
-                                <span>Rest: 90s</span>
+                                <span data-label="Volume">4 × 12–15</span>
+                                <span data-label="Rest">90s</span>
                             </div>
-                            <button class="btn btn-primary btn-small" onclick="playVideo('squats')">Watch Video</button>
                         </div>
+                        <button class="exercise-card__cta" onclick="playVideo('squats')" aria-label="Watch squats video"></button>
                     </div>
-                    
-                    <div class="exercise-card">
+                    <div class="exercise-card" data-reveal data-stagger="2">
+                        <span class="exercise-card__num">02</span>
                         <div class="exercise-image">
-                            <img src="https://placehold.co/300x200/20c997/ffffff?text=Lunges" alt="Lunges">
-                            <div class="play-button">▶</div>
+                            <img src="https://placehold.co/640x480/1f1f23/ed2124?text=Lunges" alt="Lunges">
+                            <div class="play-button" aria-hidden="true"><span>▶</span></div>
                         </div>
                         <div class="exercise-info">
                             <h4>Lunges</h4>
                             <p>Unilateral leg strength and balance. Perfect for functional movement patterns.</p>
                             <div class="exercise-meta">
-                                <span>3 sets × 12 reps each leg</span>
-                                <span>Rest: 60s</span>
+                                <span data-label="Volume">3 × 12 / leg</span>
+                                <span data-label="Rest">60s</span>
                             </div>
-                            <button class="btn btn-primary btn-small" onclick="playVideo('lunges')">Watch Video</button>
                         </div>
+                        <button class="exercise-card__cta" onclick="playVideo('lunges')" aria-label="Watch lunges video"></button>
                     </div>
-                    
-                    <div class="exercise-card">
+                    <div class="exercise-card" data-reveal data-stagger="3">
+                        <span class="exercise-card__num">03</span>
                         <div class="exercise-image">
-                            <img src="https://placehold.co/300x200/e83e8c/ffffff?text=Romanian+Deadlifts" alt="Romanian Deadlifts">
-                            <div class="play-button">▶</div>
+                            <img src="https://placehold.co/640x480/1f1f23/ed2124?text=RDL" alt="Romanian Deadlifts">
+                            <div class="play-button" aria-hidden="true"><span>▶</span></div>
                         </div>
                         <div class="exercise-info">
                             <h4>Romanian Deadlifts</h4>
                             <p>Target your hamstrings and glutes with this hip-hinge movement pattern.</p>
                             <div class="exercise-meta">
-                                <span>3 sets × 10-12 reps</span>
-                                <span>Rest: 90s</span>
+                                <span data-label="Volume">3 × 10–12</span>
+                                <span data-label="Rest">90s</span>
                             </div>
-                            <button class="btn btn-primary btn-small" onclick="playVideo('romanian-deadlifts')">Watch Video</button>
                         </div>
+                        <button class="exercise-card__cta" onclick="playVideo('romanian-deadlifts')" aria-label="Watch RDL video"></button>
                     </div>
-                    
-                    <div class="exercise-card">
+                    <div class="exercise-card" data-reveal data-stagger="4">
+                        <span class="exercise-card__num">04</span>
                         <div class="exercise-image">
-                            <img src="https://placehold.co/300x200/6c757d/ffffff?text=Calf+Raises" alt="Calf Raises">
-                            <div class="play-button">▶</div>
+                            <img src="https://placehold.co/640x480/1f1f23/ed2124?text=Calf+Raise" alt="Calf Raises">
+                            <div class="play-button" aria-hidden="true"><span>▶</span></div>
                         </div>
                         <div class="exercise-info">
                             <h4>Calf Raises</h4>
                             <p>Strengthen your calves and improve lower leg definition and power.</p>
                             <div class="exercise-meta">
-                                <span>3 sets × 15-20 reps</span>
-                                <span>Rest: 45s</span>
+                                <span data-label="Volume">3 × 15–20</span>
+                                <span data-label="Rest">45s</span>
                             </div>
-                            <button class="btn btn-primary btn-small" onclick="playVideo('calf-raises')">Watch Video</button>
                         </div>
+                        <button class="exercise-card__cta" onclick="playVideo('calf-raises')" aria-label="Watch calf raises video"></button>
                     </div>
                 </div>
-            </div>
-            
+            </article>
+
             <!-- Day 3 -->
-            <div class="workout-day" id="day3">
-                <h3>Day 3: Core & Conditioning</h3>
-                <p class="day-description">Strengthen your core and improve overall conditioning with bodyweight and functional movements.</p>
-                
+            <article class="workout-day" id="day3" role="tabpanel">
+                <header class="workout-day__head">
+                    <h3>Day 03<span>.</span><br>Core &amp; Conditioning</h3>
+                    <p class="day-description">
+                        Build core stability and stamina with bodyweight movements. Brace, breathe, hold.
+                    </p>
+                </header>
                 <div class="exercises-grid">
-                    <div class="exercise-card">
+                    <div class="exercise-card" data-reveal data-stagger="1">
+                        <span class="exercise-card__num">01</span>
                         <div class="exercise-image">
-                            <img src="https://placehold.co/300x200/17a2b8/ffffff?text=Planks" alt="Planks">
-                            <div class="play-button">▶</div>
+                            <img src="https://placehold.co/640x480/1f1f23/ed2124?text=Planks" alt="Planks">
+                            <div class="play-button" aria-hidden="true"><span>▶</span></div>
                         </div>
                         <div class="exercise-info">
                             <h4>Planks</h4>
                             <p>Build core stability and endurance with this isometric hold exercise.</p>
                             <div class="exercise-meta">
-                                <span>3 sets × 30-60 seconds</span>
-                                <span>Rest: 60s</span>
+                                <span data-label="Volume">3 × 30–60s</span>
+                                <span data-label="Rest">60s</span>
                             </div>
-                            <button class="btn btn-primary btn-small" onclick="playVideo('planks')">Watch Video</button>
                         </div>
+                        <button class="exercise-card__cta" onclick="playVideo('planks')" aria-label="Watch planks video"></button>
                     </div>
-                    
-                    <div class="exercise-card">
+                    <div class="exercise-card" data-reveal data-stagger="2">
+                        <span class="exercise-card__num">02</span>
                         <div class="exercise-image">
-                            <img src="https://placehold.co/300x200/28a745/ffffff?text=Push-Ups" alt="Push-Ups">
-                            <div class="play-button">▶</div>
+                            <img src="https://placehold.co/640x480/1f1f23/ed2124?text=Push-Ups" alt="Push-Ups">
+                            <div class="play-button" aria-hidden="true"><span>▶</span></div>
                         </div>
                         <div class="exercise-info">
                             <h4>Push-Ups</h4>
                             <p>Full-body conditioning exercise targeting chest, shoulders, and core.</p>
                             <div class="exercise-meta">
-                                <span>3 sets × 8-15 reps</span>
-                                <span>Rest: 60s</span>
+                                <span data-label="Volume">3 × 8–15</span>
+                                <span data-label="Rest">60s</span>
                             </div>
-                            <button class="btn btn-primary btn-small" onclick="playVideo('push-ups')">Watch Video</button>
                         </div>
+                        <button class="exercise-card__cta" onclick="playVideo('push-ups')" aria-label="Watch push-ups video"></button>
                     </div>
-                    
-                    <div class="exercise-card">
+                    <div class="exercise-card" data-reveal data-stagger="3">
+                        <span class="exercise-card__num">03</span>
                         <div class="exercise-image">
-                            <img src="https://placehold.co/300x200/6f42c1/ffffff?text=Squats" alt="Squats">
-                            <div class="play-button">▶</div>
+                            <img src="https://placehold.co/640x480/1f1f23/ed2124?text=BW+Squat" alt="Squats">
+                            <div class="play-button" aria-hidden="true"><span>▶</span></div>
                         </div>
                         <div class="exercise-info">
                             <h4>Bodyweight Squats</h4>
                             <p>High-rep squats for conditioning and lower body endurance.</p>
                             <div class="exercise-meta">
-                                <span>3 sets × 15-20 reps</span>
-                                <span>Rest: 45s</span>
+                                <span data-label="Volume">3 × 15–20</span>
+                                <span data-label="Rest">45s</span>
                             </div>
-                            <button class="btn btn-primary btn-small" onclick="playVideo('squats')">Watch Video</button>
                         </div>
+                        <button class="exercise-card__cta" onclick="playVideo('squats')" aria-label="Watch bodyweight squats video"></button>
                     </div>
-                    
-                    <div class="exercise-card">
+                    <div class="exercise-card" data-reveal data-stagger="4">
+                        <span class="exercise-card__num">04</span>
                         <div class="exercise-image">
-                            <img src="https://placehold.co/300x200/20c997/ffffff?text=Lunges" alt="Lunges">
-                            <div class="play-button">▶</div>
+                            <img src="https://placehold.co/640x480/1f1f23/ed2124?text=Walking+Lunge" alt="Walking Lunges">
+                            <div class="play-button" aria-hidden="true"><span>▶</span></div>
                         </div>
                         <div class="exercise-info">
                             <h4>Walking Lunges</h4>
                             <p>Dynamic movement for leg strength and cardiovascular conditioning.</p>
                             <div class="exercise-meta">
-                                <span>3 sets × 10 each leg</span>
-                                <span>Rest: 60s</span>
+                                <span data-label="Volume">3 × 10 / leg</span>
+                                <span data-label="Rest">60s</span>
                             </div>
-                            <button class="btn btn-primary btn-small" onclick="playVideo('lunges')">Watch Video</button>
                         </div>
+                        <button class="exercise-card__cta" onclick="playVideo('lunges')" aria-label="Watch walking lunges video"></button>
                     </div>
                 </div>
-            </div>
-            
+            </article>
+
             <!-- Day 4 -->
-            <div class="workout-day" id="day4">
-                <h3>Day 4: Upper Body Strength</h3>
-                <p class="day-description">Advanced upper body training with focus on strength and muscle building.</p>
-                
+            <article class="workout-day" id="day4" role="tabpanel">
+                <header class="workout-day__head">
+                    <h3>Day 04<span>.</span><br>Upper Body Strength</h3>
+                    <p class="day-description">
+                        Advanced upper body training with focus on strength and muscle building. Heavier loads, fewer reps.
+                    </p>
+                </header>
                 <div class="exercises-grid">
-                    <div class="exercise-card">
+                    <div class="exercise-card" data-reveal data-stagger="1">
+                        <span class="exercise-card__num">01</span>
                         <div class="exercise-image">
-                            <img src="https://placehold.co/300x200/4a90e2/ffffff?text=Pull-Ups" alt="Pull-Ups">
-                            <div class="play-button">▶</div>
+                            <img src="https://placehold.co/640x480/1f1f23/ed2124?text=Pull-Ups" alt="Pull-Ups">
+                            <div class="play-button" aria-hidden="true"><span>▶</span></div>
                         </div>
                         <div class="exercise-info">
                             <h4>Pull-Ups</h4>
                             <p>Advanced pulling exercise for back and bicep development.</p>
                             <div class="exercise-meta">
-                                <span>4 sets × 6-10 reps</span>
-                                <span>Rest: 90s</span>
+                                <span data-label="Volume">4 × 6–10</span>
+                                <span data-label="Rest">90s</span>
                             </div>
-                            <button class="btn btn-primary btn-small" onclick="playVideo('pull-ups')">Watch Video</button>
                         </div>
+                        <button class="exercise-card__cta" onclick="playVideo('pull-ups')" aria-label="Watch pull-ups video"></button>
                     </div>
-                    
-                    <div class="exercise-card">
+                    <div class="exercise-card" data-reveal data-stagger="2">
+                        <span class="exercise-card__num">02</span>
                         <div class="exercise-image">
-                            <img src="https://placehold.co/300x200/dc3545/ffffff?text=Dumbbell+Rows" alt="Dumbbell Rows">
-                            <div class="play-button">▶</div>
+                            <img src="https://placehold.co/640x480/1f1f23/ed2124?text=Heavy+Rows" alt="Heavy Dumbbell Rows">
+                            <div class="play-button" aria-hidden="true"><span>▶</span></div>
                         </div>
                         <div class="exercise-info">
                             <h4>Heavy Dumbbell Rows</h4>
                             <p>Build a strong, wide back with heavier resistance training.</p>
                             <div class="exercise-meta">
-                                <span>4 sets × 8-10 reps each arm</span>
-                                <span>Rest: 90s</span>
+                                <span data-label="Volume">4 × 8–10 / arm</span>
+                                <span data-label="Rest">90s</span>
                             </div>
-                            <button class="btn btn-primary btn-small" onclick="playVideo('dumbbell-rows')">Watch Video</button>
                         </div>
+                        <button class="exercise-card__cta" onclick="playVideo('dumbbell-rows')" aria-label="Watch heavy rows video"></button>
                     </div>
-                    
-                    <div class="exercise-card">
+                    <div class="exercise-card" data-reveal data-stagger="3">
+                        <span class="exercise-card__num">03</span>
                         <div class="exercise-image">
-                            <img src="https://placehold.co/300x200/fd7e14/ffffff?text=Shoulder+Press" alt="Shoulder Press">
-                            <div class="play-button">▶</div>
+                            <img src="https://placehold.co/640x480/1f1f23/ed2124?text=OHP" alt="Shoulder Press">
+                            <div class="play-button" aria-hidden="true"><span>▶</span></div>
                         </div>
                         <div class="exercise-info">
                             <h4>Shoulder Press</h4>
                             <p>Build powerful shoulders and improve overhead strength.</p>
                             <div class="exercise-meta">
-                                <span>4 sets × 8-10 reps</span>
-                                <span>Rest: 90s</span>
+                                <span data-label="Volume">4 × 8–10</span>
+                                <span data-label="Rest">90s</span>
                             </div>
-                            <button class="btn btn-primary btn-small" onclick="playVideo('shoulder-press')">Watch Video</button>
                         </div>
+                        <button class="exercise-card__cta" onclick="playVideo('shoulder-press')" aria-label="Watch shoulder press video"></button>
                     </div>
-                    
-                    <div class="exercise-card">
+                    <div class="exercise-card" data-reveal data-stagger="4">
+                        <span class="exercise-card__num">04</span>
                         <div class="exercise-image">
-                            <img src="https://placehold.co/300x200/28a745/ffffff?text=Push-Ups" alt="Push-Ups">
-                            <div class="play-button">▶</div>
+                            <img src="https://placehold.co/640x480/1f1f23/ed2124?text=Diamond" alt="Diamond Push-Ups">
+                            <div class="play-button" aria-hidden="true"><span>▶</span></div>
                         </div>
                         <div class="exercise-info">
                             <h4>Diamond Push-Ups</h4>
                             <p>Advanced push-up variation targeting triceps and inner chest.</p>
                             <div class="exercise-meta">
-                                <span>3 sets × 6-12 reps</span>
-                                <span>Rest: 60s</span>
+                                <span data-label="Volume">3 × 6–12</span>
+                                <span data-label="Rest">60s</span>
                             </div>
-                            <button class="btn btn-primary btn-small" onclick="playVideo('push-ups')">Watch Video</button>
                         </div>
+                        <button class="exercise-card__cta" onclick="playVideo('push-ups')" aria-label="Watch diamond push-ups video"></button>
                     </div>
                 </div>
-            </div>
-            
+            </article>
+
             <!-- Day 5 -->
-            <div class="workout-day" id="day5">
-                <h3>Day 5: Full Body Integration</h3>
-                <p class="day-description">Combine upper and lower body movements for complete strength and conditioning.</p>
-                
+            <article class="workout-day" id="day5" role="tabpanel">
+                <header class="workout-day__head">
+                    <h3>Day 05<span>.</span><br>Full Body Integration</h3>
+                    <p class="day-description">
+                        Combine upper and lower body movements for complete strength and conditioning. Earn the rest day.
+                    </p>
+                </header>
                 <div class="exercises-grid">
-                    <div class="exercise-card">
+                    <div class="exercise-card" data-reveal data-stagger="1">
+                        <span class="exercise-card__num">01</span>
                         <div class="exercise-image">
-                            <img src="https://placehold.co/300x200/e83e8c/ffffff?text=Romanian+Deadlifts" alt="Romanian Deadlifts">
-                            <div class="play-button">▶</div>
+                            <img src="https://placehold.co/640x480/1f1f23/ed2124?text=RDL" alt="Romanian Deadlifts">
+                            <div class="play-button" aria-hidden="true"><span>▶</span></div>
                         </div>
                         <div class="exercise-info">
                             <h4>Romanian Deadlifts</h4>
                             <p>Full posterior chain development with emphasis on hamstrings and glutes.</p>
                             <div class="exercise-meta">
-                                <span>4 sets × 8-12 reps</span>
-                                <span>Rest: 90s</span>
+                                <span data-label="Volume">4 × 8–12</span>
+                                <span data-label="Rest">90s</span>
                             </div>
-                            <button class="btn btn-primary btn-small" onclick="playVideo('romanian-deadlifts')">Watch Video</button>
                         </div>
+                        <button class="exercise-card__cta" onclick="playVideo('romanian-deadlifts')" aria-label="Watch RDL video"></button>
                     </div>
-                    
-                    <div class="exercise-card">
+                    <div class="exercise-card" data-reveal data-stagger="2">
+                        <span class="exercise-card__num">02</span>
                         <div class="exercise-image">
-                            <img src="https://placehold.co/300x200/6f42c1/ffffff?text=Squats" alt="Squats">
-                            <div class="play-button">▶</div>
+                            <img src="https://placehold.co/640x480/1f1f23/ed2124?text=Goblet" alt="Goblet Squat">
+                            <div class="play-button" aria-hidden="true"><span>▶</span></div>
                         </div>
                         <div class="exercise-info">
                             <h4>Goblet Squats</h4>
                             <p>Full-body squat variation with core engagement and mobility.</p>
                             <div class="exercise-meta">
-                                <span>3 sets × 12-15 reps</span>
-                                <span>Rest: 60s</span>
+                                <span data-label="Volume">3 × 12–15</span>
+                                <span data-label="Rest">60s</span>
                             </div>
-                            <button class="btn btn-primary btn-small" onclick="playVideo('squats')">Watch Video</button>
                         </div>
+                        <button class="exercise-card__cta" onclick="playVideo('squats')" aria-label="Watch goblet squats video"></button>
                     </div>
-                    
-                    <div class="exercise-card">
+                    <div class="exercise-card" data-reveal data-stagger="3">
+                        <span class="exercise-card__num">03</span>
                         <div class="exercise-image">
-                            <img src="https://placehold.co/300x200/4a90e2/ffffff?text=Pull-Ups" alt="Pull-Ups">
-                            <div class="play-button">▶</div>
+                            <img src="https://placehold.co/640x480/1f1f23/ed2124?text=Pull-Ups" alt="Assisted Pull-Ups">
+                            <div class="play-button" aria-hidden="true"><span>▶</span></div>
                         </div>
                         <div class="exercise-info">
                             <h4>Assisted Pull-Ups</h4>
                             <p>Focus on controlled movement and muscle endurance.</p>
                             <div class="exercise-meta">
-                                <span>3 sets × 8-12 reps</span>
-                                <span>Rest: 60s</span>
+                                <span data-label="Volume">3 × 8–12</span>
+                                <span data-label="Rest">60s</span>
                             </div>
-                            <button class="btn btn-primary btn-small" onclick="playVideo('pull-ups')">Watch Video</button>
                         </div>
+                        <button class="exercise-card__cta" onclick="playVideo('pull-ups')" aria-label="Watch assisted pull-ups video"></button>
                     </div>
-                    
-                    <div class="exercise-card">
+                    <div class="exercise-card" data-reveal data-stagger="4">
+                        <span class="exercise-card__num">04</span>
                         <div class="exercise-image">
-                            <img src="https://placehold.co/300x200/17a2b8/ffffff?text=Planks" alt="Planks">
-                            <div class="play-button">▶</div>
+                            <img src="https://placehold.co/640x480/1f1f23/ed2124?text=Plank" alt="Plank Hold">
+                            <div class="play-button" aria-hidden="true"><span>▶</span></div>
                         </div>
                         <div class="exercise-info">
                             <h4>Plank Hold</h4>
                             <p>Finish strong with core stability and full-body tension.</p>
                             <div class="exercise-meta">
-                                <span>3 sets × 45-90 seconds</span>
-                                <span>Rest: 60s</span>
+                                <span data-label="Volume">3 × 45–90s</span>
+                                <span data-label="Rest">60s</span>
                             </div>
-                            <button class="btn btn-primary btn-small" onclick="playVideo('planks')">Watch Video</button>
                         </div>
+                        <button class="exercise-card__cta" onclick="playVideo('planks')" aria-label="Watch plank hold video"></button>
                     </div>
                 </div>
-            </div>
+            </article>
+
         </div>
     </section>
 
-    <!-- Workout Progress Section -->
+    <!-- Workout Progress -->
     <section class="workout-progress">
         <div class="container">
-            <h2>Track Your Progress</h2>
+            <div class="section__head">
+                <span class="mono-label" data-reveal>[ Track · 04 ]</span>
+                <h2 data-reveal data-stagger="1">Your progress<br>this week.</h2>
+            </div>
             <div class="progress-grid">
-                <div class="progress-card">
-                    <h3>Workout Completion</h3>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 20%"></div>
-                    </div>
-                    <p>Day 1 of 5 completed</p>
+                <div class="progress-card" data-reveal data-stagger="1">
+                    <h3>[ Completion ]</h3>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 20%"></div></div>
+                    <p>Day 01 of 05 complete</p>
                 </div>
-                <div class="progress-card">
-                    <h3>Weekly Goal</h3>
+                <div class="progress-card" data-reveal data-stagger="2">
+                    <h3>[ Weekly Goal ]</h3>
                     <div class="progress-circle">
-                        <svg width="100" height="100">
-                            <circle cx="50" cy="50" r="40" stroke="#e9ecef" stroke-width="8" fill="none"></circle>
-                            <circle cx="50" cy="50" r="40" stroke="#4a90e2" stroke-width="8" fill="none" 
-                                    stroke-dasharray="251.2" stroke-dashoffset="200.96" stroke-linecap="round"></circle>
+                        <svg width="120" height="120" viewBox="0 0 120 120">
+                            <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,0.08)" stroke-width="2" fill="none"></circle>
+                            <circle cx="60" cy="60" r="50" stroke="#ed2124" stroke-width="2" fill="none"
+                                    stroke-dasharray="314" stroke-dashoffset="251.2" stroke-linecap="round"></circle>
                         </svg>
                         <span class="progress-text">20%</span>
                     </div>
                 </div>
-                <div class="progress-card">
-                    <h3>Next Workout</h3>
+                <div class="progress-card" data-reveal data-stagger="3">
+                    <h3>[ Next session ]</h3>
                     <div class="next-workout">
-                        <h4>Day 2: Lower Body Power</h4>
-                        <p>Tomorrow • 45 minutes</p>
+                        <h4>Day 02: Lower Body</h4>
+                        <p>Tomorrow · 45 minutes</p>
                         <button class="btn btn-secondary btn-small">Schedule</button>
                     </div>
                 </div>
@@ -458,57 +517,61 @@
     </section>
 
     <!-- Video Modal -->
-    <div class="video-modal" id="videoModal">
+    <div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-labelledby="videoTitle">
         <div class="video-modal-content">
-            <span class="close-modal">&times;</span>
+            <button class="close-modal" aria-label="Close">×</button>
+            <span class="mono-label" style="display:block;margin-bottom:8px;">[ Exercise · Watch ]</span>
             <h3 id="videoTitle">Exercise Video</h3>
             <div class="video-placeholder">
-                <img src="https://placehold.co/640x360/000000/ffffff?text=Video+Player" alt="Video Player" id="videoPlayer">
+                <img src="https://placehold.co/1280x720/0e0e10/ed2124?text=Video+Player" alt="Video Player" id="videoPlayer">
                 <div class="video-controls">
                     <button class="play-btn">▶ Play Video</button>
                 </div>
             </div>
             <div class="video-info">
-                <h4>Exercise Instructions:</h4>
-                <ul id="exerciseInstructions">
-                    <li>Proper form instructions will appear here</li>
-                    <li>Step-by-step guidance</li>
-                    <li>Safety tips and modifications</li>
-                </ul>
-                <div class="video-tips">
-                    <h4>Pro Tips:</h4>
-                    <div id="exerciseTips">
-                        <p>Additional tips and modifications will be displayed here.</p>
+                <div>
+                    <h4>[ Instructions ]</h4>
+                    <ul id="exerciseInstructions">
+                        <li>Form cues will appear here.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>[ Pro Tips ]</h4>
+                    <div class="video-tips" id="exerciseTips">
+                        <p>Modifications and progression notes will appear here.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Workout Notes Section -->
+    <!-- Workout Notes -->
     <section class="workout-notes">
         <div class="container">
-            <h2>Workout Notes & Tips</h2>
+            <div class="section__head">
+                <span class="mono-label" data-reveal>[ Notes · 05 ]</span>
+                <h2 data-reveal data-stagger="1">Train smart.<br>Train safe.</h2>
+            </div>
             <div class="notes-grid">
-                <div class="note-card">
-                    <div class="note-icon">💡</div>
-                    <h3>Form First</h3>
-                    <p>Always prioritize proper form over heavy weights. Quality movement patterns prevent injury and maximize results.</p>
+                <div class="note-card" data-reveal data-stagger="1">
+                    <span class="note-icon">01 — Form</span>
+                    <h3>Form first, weight second.</h3>
+                    <p>Always prioritize proper form over heavier loads. Quality movement prevents injury and builds the right pattern.</p>
                 </div>
-                <div class="note-card">
-                    <div class="note-icon">💧</div>
-                    <h3>Stay Hydrated</h3>
-                    <p>Drink water before, during, and after your workout. Proper hydration supports performance and recovery.</p>
+                <div class="note-card" data-reveal data-stagger="2">
+                    <span class="note-icon">02 — Hydrate</span>
+                    <h3>Drink before, during, after.</h3>
+                    <p>Hydration supports performance and recovery. Don't wait until you're thirsty — you're already late.</p>
                 </div>
-                <div class="note-card">
-                    <div class="note-icon">⏰</div>
-                    <h3>Rest Between Sets</h3>
-                    <p>Follow the recommended rest periods. They're designed to optimize your performance for each exercise.</p>
+                <div class="note-card" data-reveal data-stagger="3">
+                    <span class="note-icon">03 — Rest</span>
+                    <h3>Honor the rest periods.</h3>
+                    <p>Rest is part of the program. Cutting it short reduces strength gains. Set a timer, breathe, reset.</p>
                 </div>
-                <div class="note-card">
-                    <div class="note-icon">📝</div>
-                    <h3>Track Progress</h3>
-                    <p>Record your weights, reps, and how you feel. Tracking helps you see improvements and adjust your training.</p>
+                <div class="note-card" data-reveal data-stagger="4">
+                    <span class="note-icon">04 — Track</span>
+                    <h3>Write it down.</h3>
+                    <p>Note weights, reps, and how you felt. Progress is a series of small wins you'd otherwise forget.</p>
                 </div>
             </div>
         </div>
@@ -517,32 +580,41 @@
     <!-- Related Workouts -->
     <section class="related-workouts">
         <div class="container">
-            <h2>You Might Also Like</h2>
+            <div class="section__head">
+                <span class="mono-label" data-reveal>[ Adjacent · 06 ]</span>
+                <h2 data-reveal data-stagger="1">You might<br>also train.</h2>
+            </div>
             <div class="related-grid">
-                <div class="related-card">
-                    <img src="https://placehold.co/250x150/28a745/ffffff?text=HIIT+Training" alt="HIIT Training">
-                    <div class="related-content">
-                        <h4>HIIT Training - 5 Days</h4>
-                        <p>High-intensity intervals for maximum calorie burn</p>
-                        <a href="workout.html?program=hiit-5-beginner" class="btn btn-secondary btn-small">Try This Program</a>
+                <a href="workout.html?program=hiit-5-beginner" class="related-card" data-reveal data-stagger="1">
+                    <div class="related-card__image">
+                        <img src="https://placehold.co/640x480/1f1f23/ed2124?text=HIIT" alt="HIIT Training">
                     </div>
-                </div>
-                <div class="related-card">
-                    <img src="https://placehold.co/250x150/fd7e14/ffffff?text=Fat+Loss" alt="Fat Loss">
                     <div class="related-content">
-                        <h4>Fat Loss - 3 Days</h4>
-                        <p>Efficient fat burning workouts for busy schedules</p>
-                        <a href="workout.html?program=fat-loss-3-beginner" class="btn btn-secondary btn-small">Try This Program</a>
+                        <span class="mono-label">[ 5 Days · Intervals ]</span>
+                        <h4>HIIT Training</h4>
+                        <p>High-intensity intervals for maximum calorie burn.</p>
                     </div>
-                </div>
-                <div class="related-card">
-                    <img src="https://placehold.co/250x150/6f42c1/ffffff?text=Mobility" alt="Mobility">
+                </a>
+                <a href="workout.html?program=fat-loss-3-beginner" class="related-card" data-reveal data-stagger="2">
+                    <div class="related-card__image">
+                        <img src="https://placehold.co/640x480/1f1f23/ed2124?text=Fat+Loss" alt="Fat Loss">
+                    </div>
                     <div class="related-content">
-                        <h4>Mobility & Flexibility - 3 Days</h4>
-                        <p>Improve range of motion and prevent injuries</p>
-                        <a href="workout.html?program=mobility-3-beginner" class="btn btn-secondary btn-small">Try This Program</a>
+                        <span class="mono-label">[ 3 Days · Conditioning ]</span>
+                        <h4>Fat Loss — 3 Days</h4>
+                        <p>Efficient fat-burning workouts for busy schedules.</p>
                     </div>
-                </div>
+                </a>
+                <a href="workout.html?program=mobility-3-beginner" class="related-card" data-reveal data-stagger="3">
+                    <div class="related-card__image">
+                        <img src="https://placehold.co/640x480/1f1f23/ed2124?text=Mobility" alt="Mobility">
+                    </div>
+                    <div class="related-content">
+                        <span class="mono-label">[ 3 Days · Recovery ]</span>
+                        <h4>Mobility &amp; Flexibility</h4>
+                        <p>Improve range of motion and prevent injuries.</p>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -550,50 +622,54 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Medifit</h3>
-                    <p>Your trusted partner in fitness and wellness.</p>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook">📘</a>
-                        <a href="#" aria-label="Instagram">📷</a>
-                        <a href="#" aria-label="Twitter">🐦</a>
-                        <a href="#" aria-label="YouTube">📺</a>
+            <div class="footer__wordmark" aria-hidden="true">MEDIFIT<span>.</span></div>
+            <div class="footer__grid">
+                <div class="footer__col">
+                    <h4>[ Studio ]</h4>
+                    <p>A workout system from Medifit Wellness. Designed by physiotherapists, used by people who actually train.</p>
+                    <div class="footer__social" style="margin-top:24px;">
+                        <a href="#">IG</a><a href="#">YT</a><a href="#">X</a><a href="#">EM</a>
                     </div>
                 </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
+                <div class="footer__col">
+                    <h4>[ Navigate ]</h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html">Index</a></li>
                         <li><a href="archive.html">Workouts</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                        <li><a href="#nutrition">Nutrition</a></li>
-                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="index.html#manifesto">Method</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h4>Support</h4>
+                <div class="footer__col">
+                    <h4>[ Programs ]</h4>
                     <ul>
-                        <li><a href="#faq">FAQ</a></li>
-                        <li><a href="#help">Help Center</a></li>
-                        <li><a href="#community">Community</a></li>
-                        <li><a href="#feedback">Feedback</a></li>
+                        <li><a href="archive.html?type=muscle-gain">Muscle Gain</a></li>
+                        <li><a href="archive.html?type=fat-loss">Fat Loss</a></li>
+                        <li><a href="archive.html?type=mobility">Mobility</a></li>
+                        <li><a href="archive.html?type=hiit">HIIT</a></li>
+                        <li><a href="archive.html?type=crossfit">CrossFit</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <p>📧 info@medifitworkout.com</p>
-                    <p>📞 (555) 123-4567</p>
-                    <p>📍 123 Fitness Street<br>Wellness City, WC 12345</p>
+                <div class="footer__col">
+                    <h4>[ Contact ]</h4>
+                    <p>info@medifitworkout.com</p>
+                    <p>+91 · (000) 000 0000</p>
+                    <p>Medifit Wellness Studio</p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Medifit. All rights reserved. | <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
+            <div class="footer__bottom">
+                <span>© 2026 Medifit · All rights reserved</span>
+                <span>
+                    <a href="#privacy">Privacy</a>
+                    <a href="#terms">Terms</a>
+                </span>
             </div>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,13 @@
+# Local workout video bundle — too large for git or Vercel (100MB cap)
+workout-videos.zip
+*.zip
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Logs
+*.log
