@@ -356,6 +356,7 @@ body::before {
   isolation: isolate;
   height: 100vh;
   height: 100svh;
+  height: 100dvh;
   min-height: 560px;
   width: 100%;
   overflow: hidden;
@@ -1672,59 +1673,170 @@ body::before {
   .video-info { grid-template-columns: 1fr; gap: 24px; }
 }
 
+/* ------- Mobile / small tablet (≤ 720px) ------- */
 @media (max-width: 720px) {
+  /* Body-level safety */
+  body { -webkit-tap-highlight-color: rgba(237, 33, 36, 0.18); }
+  button, a, .btn, .nav-link, .day-tab { touch-action: manipulation; }
+  /* Guarantee 44px tap targets on the main interactive controls */
+  .btn { min-height: 44px; }
+
+  /* Nav drawer */
   .hamburger { display: block; }
   .nav-menu {
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
-    width: min(80vw, 360px);
+    width: min(82vw, 360px);
     background: var(--bg-1);
     flex-direction: column;
     gap: 0;
-    padding: 100px 32px 32px;
+    padding: 100px 28px max(32px, env(safe-area-inset-bottom));
     border-left: 1px solid var(--line);
     transform: translateX(100%);
     transition: transform 0.55s var(--ease-in-out);
+    overflow-y: auto;
   }
   .nav-menu.is-open { transform: translateX(0); }
   .nav-menu li { width: 100%; border-bottom: 1px solid var(--line); }
   .nav-link {
     width: 100%;
-    padding: 20px 0;
-    font-size: 12px;
+    padding: 22px 0;
+    font-size: 13px;
   }
+
+  /* Hero — allow wrap, tighter bottom anchor */
+  .hero__title { white-space: normal; font-size: clamp(1.7rem, 8.4vw, 3rem); line-height: 1.04; }
+  .hero__buttons { gap: 12px; }
+  .hero__buttons .btn { padding: 16px 22px; font-size: 11px; }
+  .hero__scroll { display: none; }
+
+  /* Sections */
   .features-grid { grid-template-columns: 1fr; }
   .feature { grid-column: span 1 !important; padding: 36px 24px 40px; }
-
   .manifesto__stats { grid-template-columns: 1fr; gap: 24px; }
 
-  .footer__grid { grid-template-columns: 1fr; }
-  .footer__bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
+  /* Footer */
+  .footer { padding-top: 56px; padding-bottom: max(24px, env(safe-area-inset-bottom)); }
+  .footer__wordmark { font-size: 22vw; margin: 16px 0 40px; }
+  .footer__grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer__bottom { flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 56px; }
 
-  .programs-counter { font-size: 10px; }
-  .program-card { grid-template-columns: 48px 1fr; padding: 24px 0; }
+  /* Archive */
+  .page-header { padding: 140px 0 40px; }
+  .page-header__grid { grid-template-columns: 1fr; gap: 32px; padding-bottom: 32px; }
+  .programs-counter { font-size: 10px; flex-wrap: wrap; gap: 8px; }
+  .program-card { grid-template-columns: 44px 1fr; gap: 16px; padding: 22px 0; }
+  .program-card:hover { padding-left: 0; padding-right: 0; }
   .program-card__meta { display: none; }
+  .program-card__arrow { display: none; }
+  .program-card__title { font-size: clamp(1.4rem, 6.5vw, 2rem); }
+  .program-card:hover .program-card__title { transform: none; }
+  .program-card__preview { display: none; }
 
-  .workout-header__grid { grid-template-columns: 1fr; }
-  .day-tab { padding: 16px 12px; min-width: 90px; }
-  .day-tab__name { font-size: 12px; }
+  /* Filters — sticky, 2 cols, larger font to dodge iOS zoom */
+  .filters__container { grid-template-columns: 1fr 1fr; gap: 14px 20px; padding: 8px var(--gutter); }
+  .filters__label { display: none; }
+  .filter-group label { font-size: 9px; }
+  .filter-select { font-size: 16px; padding: 8px 24px 8px 0; }
 
-  .exercise-card { grid-template-columns: 40px 140px 1fr; gap: 16px; padding: 20px 0; }
-  .exercise-image { height: 100px; }
-  .exercise-card__cta { display: none; }
+  /* Workout header */
+  .workout-header { padding: 130px 0 32px; }
+  .workout-header__grid { grid-template-columns: 1fr; gap: 32px; }
+  .workout-header__title { font-size: clamp(2rem, 9vw, 3.4rem); line-height: 0.98; max-width: 100%; }
+  .breadcrumb { margin-bottom: 32px; flex-wrap: wrap; gap: 8px; }
+
+  /* Day tabs — horizontal scroll snap */
+  .day-tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin: 0 calc(var(--gutter) * -1);
+    padding: 0 var(--gutter);
+  }
+  .day-tabs::-webkit-scrollbar { display: none; }
+  .day-tab {
+    flex: 0 0 auto;
+    min-width: 132px;
+    padding: 16px 14px;
+    scroll-snap-align: start;
+  }
+  .day-tab__name { font-size: 13px; }
+
+  /* Exercise cards — stack vertically with full-width image and visible CTA */
+  .workout-day__head { grid-template-columns: 1fr; gap: 20px; margin-bottom: 40px; padding-bottom: 24px; }
+  .exercise-card {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      "num title cta"
+      "image image image"
+      "meta meta meta";
+    column-gap: 16px;
+    row-gap: 14px;
+    padding: 22px 0;
+    align-items: center;
+  }
+  .exercise-card:hover { padding-left: 0; padding-right: 0; background: transparent; }
+  .exercise-card__num { grid-area: num; font-size: 11px; }
+  .exercise-info { grid-area: title; display: contents; }
+  .exercise-info h4 { grid-area: title; font-size: clamp(1.2rem, 4.2vw, 1.6rem); }
   .exercise-info p { display: none; }
+  .exercise-image {
+    grid-area: image;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+  }
+  .exercise-image img { filter: grayscale(0) contrast(1) brightness(1); }
+  .exercise-meta { grid-area: meta; flex-wrap: wrap; gap: 14px; margin-top: 0; }
+  .exercise-card__cta {
+    grid-area: cta;
+    display: flex;
+    width: 44px;
+    height: 44px;
+    background: var(--red);
+    border-color: var(--red);
+    color: var(--ink);
+  }
+  .play-button { opacity: 0; }
 
+  /* Workout supporting sections */
   .progress-grid, .notes-grid, .related-grid { grid-template-columns: 1fr; }
+  .related-card__image { height: 220px; }
 
-  .video-modal-content { padding: 24px; }
+  /* Video modal */
+  .video-modal { padding: 16px; }
+  .video-modal-content { padding: 24px 20px; max-height: 94vh; }
+  .video-modal h3 { font-size: clamp(1.4rem, 5.5vw, 1.8rem); padding-right: 50px; }
+  .close-modal { top: 14px; right: 14px; width: 44px; height: 44px; }
 
+  /* CTA section */
+  .cta { padding: 80px 0; }
+  .cta__content { gap: 28px; }
+
+  /* Section heads */
+  .section { padding: 72px 0; }
+  .section__head { margin-bottom: 48px; }
+
+  /* Custom cursor off on touch */
   .cursor-dot, .cursor-ring { display: none; }
 }
 
-@media (max-width: 480px) {
-  .footer__wordmark { font-size: 18vw; }
+/* ------- Tiny phones (≤ 420px) ------- */
+@media (max-width: 420px) {
+  .nav-container { gap: 12px; }
+  .hero__title { font-size: clamp(1.55rem, 8.8vw, 2.4rem); }
+  .hero__buttons .btn { padding: 14px 18px; font-size: 10px; letter-spacing: 0.2em; }
+  .filters__container { grid-template-columns: 1fr; gap: 12px; }
+  .footer__wordmark { font-size: 26vw; }
+  .program-card { padding: 18px 0; }
+  .day-tab { min-width: 116px; padding: 14px 12px; }
+  .day-tab__name { font-size: 12px; }
+  .video-info { gap: 20px; }
+  .progress-card, .note-card { padding: 28px 22px 32px; }
 }
 
 /* Reduced motion */
