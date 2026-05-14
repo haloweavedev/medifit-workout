@@ -195,24 +195,20 @@ body::before {
   align-items: center;
   text-decoration: none;
   margin-left: auto;
-  transition: transform 0.5s var(--ease-out);
 }
-.nav-logo:hover { transform: rotate(-8deg) scale(1.06); }
 .nav-logo__mark {
-  width: 42px;
-  height: 42px;
-  position: relative;
-  overflow: hidden;
+  width: 56px;
+  height: 56px;
   display: block;
 }
 .nav-logo__mark img {
-  position: absolute;
-  width: 220%;
-  height: 220%;
-  left: -36%;
-  top: -33%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 1px 8px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.55));
+}
+@media (max-width: 720px) {
+  .nav-logo__mark { width: 48px; height: 48px; }
 }
 
 .nav-menu {
@@ -403,12 +399,13 @@ body::before {
 .hero__title {
   position: relative;
   color: #ffffff;
-  margin: clamp(16px, 2.5vh, 32px) 0;
-  /* Override .display size so 4 lines fit comfortably inside 100vh */
-  font-size: clamp(2.2rem, 7vw, 7.5rem);
-  line-height: 0.92;
+  margin: 0;
+  /* 2 lines, balanced parallel couplet — no indent zig-zag */
+  font-size: clamp(2rem, 7vw, 7rem);
+  line-height: 0.98;
   letter-spacing: -0.035em;
-  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
 }
 .hero__line {
   display: block;
@@ -420,7 +417,6 @@ body::before {
   will-change: transform;
   color: #ffffff;
 }
-.hero__line--indent { padding-left: clamp(28px, 9vw, 160px); }
 .hero__line--accent {
   color: var(--red);
   font-weight: 400;
@@ -1700,8 +1696,6 @@ body::before {
     padding: 20px 0;
     font-size: 12px;
   }
-  .hero__line--indent { padding-left: 20px; }
-
   .features-grid { grid-template-columns: 1fr; }
   .feature { grid-column: span 1 !important; padding: 36px 24px 40px; }
 
