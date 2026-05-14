@@ -523,9 +523,9 @@
             <span class="mono-label" style="display:block;margin-bottom:8px;">[ Exercise · Watch ]</span>
             <h3 id="videoTitle">Exercise Video</h3>
             <div class="video-placeholder">
-                <img src="https://placehold.co/1280x720/0e0e10/ed2124?text=Video+Player" alt="Video Player" id="videoPlayer">
-                <div class="video-controls">
-                    <button class="play-btn">▶ Play Video</button>
+                <video id="videoPlayer" controls preload="metadata" playsinline></video>
+                <div class="video-empty" id="videoEmpty">
+                    <span class="mono-label">[ Video coming soon ]</span>
                 </div>
             </div>
             <div class="video-info">

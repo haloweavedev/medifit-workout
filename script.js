@@ -428,12 +428,18 @@
   }
 
   // ===================================================================
-  // VIDEO MODAL
+  // VIDEO LIBRARY
+  // Real videos live on the Medifit WordPress host:
+  // https://medifitwellness.in/wp-content/uploads/2026/05/workouts/
+  // Filenames are kebab-case with leading index, e.g. 01-push-up.mp4
   // ===================================================================
+  const VIDEO_BASE = 'https://medifitwellness.in/wp-content/uploads/2026/05/workouts';
+  const v = (file) => `${VIDEO_BASE}/${file}`;
+
   const EXERCISES = {
     'pull-ups': {
       title: 'Pull-Ups',
-      videoUrl: 'https://placehold.co/1280x720/0e0e10/ed2124?text=Pull-Ups',
+      videoUrl: null, // No pull-up video filmed yet — modal will show "coming soon"
       instructions: [
         'Hang from a bar with palms facing away, hands slightly wider than shoulders.',
         'Engage your back and pull your chest toward the bar.',
@@ -444,7 +450,7 @@
     },
     'push-ups': {
       title: 'Push-Ups',
-      videoUrl: 'https://placehold.co/1280x720/0e0e10/ed2124?text=Push-Ups',
+      videoUrl: v('01-push-up.mp4'),
       instructions: [
         'Start in a plank with hands under shoulders, body in one line.',
         'Lower chest toward the floor, elbows at 45°.',
@@ -454,19 +460,19 @@
       tips: 'For an easier version, drop knees to the floor. For harder, elevate the feet or slow the eccentric.',
     },
     'dumbbell-rows': {
-      title: 'Dumbbell Rows',
-      videoUrl: 'https://placehold.co/1280x720/0e0e10/ed2124?text=DB+Rows',
+      title: 'Bent-Over Rows',
+      videoUrl: v('03-bent-over-row.mp4'),
       instructions: [
-        'Place one knee and hand on a bench. Hold a dumbbell in the opposite hand.',
-        'Pull the dumbbell toward your hip, driving the elbow up and back.',
-        'Squeeze the shoulder blade at the top.',
-        'Lower under control.',
+        'Hinge at the hips with a flat back, holding a dumbbell in each hand.',
+        'Pull the dumbbells toward your hips, driving elbows up and back.',
+        'Squeeze the shoulder blades at the top.',
+        'Lower under control without losing the hinge.',
       ],
       tips: 'Keep your back flat and chest open — no rotation through the torso.',
     },
     'shoulder-press': {
       title: 'Shoulder Press',
-      videoUrl: 'https://placehold.co/1280x720/0e0e10/ed2124?text=Shoulder+Press',
+      videoUrl: v('31-shoulder-press.mp4'),
       instructions: [
         'Stand tall holding dumbbells at shoulder height, palms forward.',
         'Press the weights overhead until arms are fully extended.',
@@ -477,7 +483,7 @@
     },
     'squats': {
       title: 'Squats',
-      videoUrl: 'https://placehold.co/1280x720/0e0e10/ed2124?text=Squats',
+      videoUrl: v('05-squats.mp4'),
       instructions: [
         'Stand with feet shoulder-width apart, toes slightly turned out.',
         'Brace your core, sit hips back and down.',
@@ -488,7 +494,7 @@
     },
     'lunges': {
       title: 'Lunges',
-      videoUrl: 'https://placehold.co/1280x720/0e0e10/ed2124?text=Lunges',
+      videoUrl: v('15-static-lunges.mp4'),
       instructions: [
         'Step forward into a long stride, both knees bending to 90°.',
         'Front shin vertical, back knee under hip.',
@@ -499,7 +505,7 @@
     },
     'romanian-deadlifts': {
       title: 'Romanian Deadlifts',
-      videoUrl: 'https://placehold.co/1280x720/0e0e10/ed2124?text=RDL',
+      videoUrl: null, // No RDL video filmed yet
       instructions: [
         'Stand with feet hip-width, dumbbells in front of thighs.',
         'Hinge at the hips, sending hips back as you lower.',
@@ -510,7 +516,7 @@
     },
     'calf-raises': {
       title: 'Calf Raises',
-      videoUrl: 'https://placehold.co/1280x720/0e0e10/ed2124?text=Calf+Raises',
+      videoUrl: null, // No calf-raise video filmed yet
       instructions: [
         'Stand tall, balls of the feet on a step, heels hanging off.',
         'Rise onto the balls of your feet as high as possible.',
@@ -521,7 +527,7 @@
     },
     'planks': {
       title: 'Planks',
-      videoUrl: 'https://placehold.co/1280x720/0e0e10/ed2124?text=Planks',
+      videoUrl: v('07-plank.mp4'),
       instructions: [
         'Forearms on the floor, elbows under shoulders.',
         'Body in one line from heels to head, hips level.',
@@ -532,12 +538,32 @@
     },
   };
 
+  /* Available videos not currently mapped (45 total — see WP /uploads/2026/05/workouts/):
+     02-knee-up, 04-tricep-dips, 06-squats-front-view, 08-russian-twist,
+     09-side-russian-twist-02, 10-side-plank, 11-wood-chops, 12-v-crunches,
+     13-burpees, 14-skipping, 16-static-lunges-with-weights, 17-dynamic-lunges,
+     18-step-up, 19-step-up-with-dumble, 20-skater, 21-plank-jack,
+     22-child-pose, 23-cat-and-camel, 24-lower-back-stretch, 25-neck-streatch,
+     26-leg-curl, 27-leg-press, 28-quadricep-stretch, 29-glutes-bridge,
+     30-hip-thrust, 32-arnold-press, 33-inclined-press, 34-standing-shoulder-press,
+     35-leg-raies, 36-hanging-leg-raies, 37-fluttering-kicks, 38-mountain-climber,
+     39-high-knees, 40-skaters, 41-jumping-squats, 42-hamstring-stretch,
+     43-hamstring-streatch-with-box, 44-hip-flex-or-stretch, 45-butterfly-stretch
+     (46-split-lunges was truncated in the upload and not extracted) */
+
   function initVideoModal() {
     const modal = $('#videoModal');
     const close = modal && modal.querySelector('.close-modal');
     if (!modal || !close) return;
 
     function closeModal() {
+      const videoEl = $('#videoPlayer');
+      if (videoEl) {
+        videoEl.pause();
+        // Clear src so the file stops downloading in the background
+        videoEl.removeAttribute('src');
+        videoEl.load();
+      }
       modal.classList.remove('show');
       document.body.style.overflow = '';
       if (lenis) lenis.start();
@@ -554,15 +580,32 @@
   window.playVideo = function (key) {
     const modal = $('#videoModal');
     if (!modal) return;
-    const data = EXERCISES[key] || { title: key, videoUrl: '', instructions: [], tips: '' };
+    const data = EXERCISES[key] || { title: key, videoUrl: null, instructions: [], tips: '' };
 
     const titleEl = $('#videoTitle');
-    const playerEl = $('#videoPlayer');
+    const videoEl = $('#videoPlayer');
+    const placeholderEl = videoEl && videoEl.parentElement;
     const instructionsEl = $('#exerciseInstructions');
     const tipsEl = $('#exerciseTips');
 
     if (titleEl) titleEl.textContent = data.title;
-    if (playerEl && data.videoUrl) playerEl.src = data.videoUrl;
+
+    // Drive the <video> element: load real URL if available, otherwise show empty state
+    if (videoEl && placeholderEl) {
+      if (data.videoUrl) {
+        placeholderEl.classList.remove('is-empty');
+        videoEl.src = data.videoUrl;
+        videoEl.load();
+        // Autoplay muted (browsers block sound autoplay without user gesture, but
+        // this click counts as a gesture so sound should work)
+        videoEl.play().catch(() => { /* swallow autoplay rejection */ });
+      } else {
+        placeholderEl.classList.add('is-empty');
+        videoEl.removeAttribute('src');
+        videoEl.load();
+      }
+    }
+
     if (instructionsEl) {
       instructionsEl.innerHTML = '';
       (data.instructions || []).forEach((line) => {
